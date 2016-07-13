@@ -24,6 +24,7 @@ class FontSelector(Formatter):
         add_registry('fontRegistry', FontRegistry())
         simpletex._CONTEXT.fontRegistry.register(self.name)
         usepackage('fontspec')
+        usepackage('xltxtra')
         
     def format_text(self, text) -> str:
         font_tex_name = simpletex._CONTEXT.fontRegistry._font_name(self.name)

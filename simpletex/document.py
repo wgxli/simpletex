@@ -10,7 +10,6 @@ class Document(Environment):
         super().__init__('document')
         simpletex._CONTEXT.classDeclaration = Command('documentclass', [documentClass], size)
         usepackage('inputenc', 'utf8')
-        usepackage('xltxtra')
 
 
 class Title(Environment):
