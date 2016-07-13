@@ -16,3 +16,5 @@ simpletex is a Python library for automatically generating LaTeX documents. It i
                 with Subsection('Subsection Name'):
                     write('Hello World!')
     >>> doc.save("filename.tex")
+    
+Full documentation can be found at http://simpletex.readthedocs.io/.
