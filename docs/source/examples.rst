@@ -24,7 +24,6 @@ TeX Output
 	\documentclass[11pt]{article}
 	
 	\usepackage[utf8]{inputenc}
-	\usepackage{xltxtra}
 	
 	\begin{document}
 		\section{Section Name}
@@ -75,7 +74,6 @@ TeX Output
 	\documentclass[11pt]{article}
 	
 	\usepackage[utf8]{inputenc}
-	\usepackage{xltxtra}
 	
 	\begin{document}
 		\section{Section Name}
