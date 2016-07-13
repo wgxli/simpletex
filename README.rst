@@ -9,12 +9,15 @@ simpletex is a Python library for automatically generating LaTeX documents. It i
 
 .. code-block:: python
 
-    >>> from simpletex import write, save
-    >>> from simpletex.document import Document, Section, Subsection
-    >>> with Document(size='11pt') as doc:
-            with Section('Section Name'):
-                with Subsection('Subsection Name'):
-                    write('Hello World!')
-    >>> save("filename.tex")
+    from simpletex import write, save
+    from simpletex.document import Document, Section, Subsection
+    
+    with Document(size='11pt') as doc:
+        with Section('Section Name'):
+            with Subsection('Subsection Name'):
+                write('Hello World!')
+    
+    save('filename.tex')
+
     
 Full documentation can be found at http://simpletex.readthedocs.io/.
