@@ -1,6 +1,6 @@
 .. image:: https://readthedocs.org/projects/simpletex/badge/?version=latest
-:target: http://simpletex.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+    :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 simpletex: Simple LaTeX Documents
 =================================
