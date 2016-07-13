@@ -5,16 +5,20 @@ import simpletex
 class Formatter:
     def __init__(self):
         pass
+    
     def __call__(self, *args, **kwargs) -> str:
         if not args and not kwargs:
             raise TypeError("Can't re-instantiate an instance of {}.".format(self.__class__.__name__))
         else:
             return self.format_text(*args, **kwargs)
+        
     def format_text(self, text) -> str:
         """Should be overridden by subclasses."""
         return text
+    
     def __enter__(self):
         simpletex._CONTEXT.push(Paragraph())
+        
     def __exit__(self, *args):
         formattedText = self(simpletex._CONTEXT.pop())
         simpletex._CONTEXT.write(formattedText)
