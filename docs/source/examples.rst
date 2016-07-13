@@ -36,8 +36,8 @@ PDF Output:
 .. image:: /_static/basic.png
    :alt: Generated PDF
 
-Basic Usage
------------
+Simple List and Text Formatting
+-------------------------------
 .. code-block:: python
 
 	from simpletex import write, save, alias
