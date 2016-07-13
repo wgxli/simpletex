@@ -56,4 +56,4 @@ Easy enough. Let's add italicize all the section headings:
 
 	save('section_basics.tex')
 	
-Pretty good for two lines.
+Pretty good for two more lines.
