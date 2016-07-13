@@ -17,7 +17,7 @@ simpletex is a Python library for automatically generating LaTeX documents. It i
 
 Output:
 
-.. image:: https://github.com/swe100/simpletex/blob/master/docs/source/images/basic.png
+.. image:: /_static/basic.png
    :alt: Generated PDF
    
 It fully supports XeTeX and text styling:
@@ -94,7 +94,7 @@ simpletex will automatically register all fonts and apply section formatting wit
 
 Output:
 
-.. image:: https://github.com/swe100/simpletex/blob/master/docs/source/images/font.png
+.. image:: /_static/font.png
    :alt: Generated PDF
 
 Contents:
