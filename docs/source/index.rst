@@ -1,11 +1,18 @@
-.. simpletex documentation master file, created by
-   sphinx-quickstart on Wed Jul 13 10:57:34 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+simpletex: Simple LaTeX Documents
+=================================
 
-Welcome to simpletex's documentation!
-=====================================
+simpletex is a Python library for automatically generating LaTeX documents. It is extremely easy to use:
 
+.. code-block:: python
+
+    >>> from simpletex import write
+    >>> from simpletex.document import Document, Section, Subsection
+    >>> with Document(size='11pt') as doc:
+            with Section('Section Name'):
+                with Subsection('Subsection Name'):
+                    write('Hello World!')
+    >>> doc.save("filename.tex")
+    
 Contents:
 
 .. toctree::
