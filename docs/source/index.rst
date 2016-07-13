@@ -5,17 +5,26 @@ simpletex is a Python library for automatically generating LaTeX documents. It i
 
 .. code-block:: python
 
-    >>> from simpletex import write, save
-    >>> from simpletex.document import Document, Section, Subsection
-    >>> with Document(size='11pt') as doc:
-            with Section('Section Name'):
-                with Subsection('Subsection Name'):
-                    write('Hello World!')
-    >>> save("filename.tex")
+    from simpletex import write, save
+    from simpletex.document import Document, Section, Subsection
+    
+    with Document(size='11pt') as doc:
+        with Section('Section Name'):
+            with Subsection('Subsection Name'):
+                write('Hello World!')
+    
+    save('filename.tex')
 
+Output:
+
+.. figure:: https://github.com/swe100/simpletex/blob/master/docs/source/images/basic.png
+   :alt: Generated PDF
+   
 It fully supports XeTeX and text styling:
 
 .. code-block:: python
+
+
     from simpletex import write, write_break, save, usepackage
     from simpletex.document import Document, Section, Subsection
     from simpletex.formatting import Style
@@ -49,6 +58,10 @@ It fully supports XeTeX and text styling:
     
     save('filename.tex')
 
+Output:
+
+.. figure:: https://github.com/swe100/simpletex/blob/master/docs/source/images/font.png
+   :alt: Generated PDF
 
 Contents:
 
