@@ -24,3 +24,10 @@ Getting Started
 
     install
     tutorial
+    
+Advanced Usage
+--------------
+.. toctree::
+    :maxdepth: 1
+
+    internals
