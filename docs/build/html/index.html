@@ -45,7 +45,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span>
 <span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Subsection</span>
 
-<span class="k">with</span> <span class="n">Document</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s1">&#39;11pt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">doc</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">Document</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s1">&#39;11pt&#39;</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;Section Name&#39;</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">Subsection</span><span class="p">(</span><span class="s1">&#39;Subsection Name&#39;</span><span class="p">):</span>
             <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
@@ -53,87 +53,12 @@
 <span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.tex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Output:</p>
-<img alt="Generated PDF" src="_images/basic.png" />
-<p>It fully supports XeTeX and text styling:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">write_break</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">usepackage</span>
-<span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Subsection</span>
-<span class="kn">from</span> <span class="nn">simpletex.formatting</span> <span class="kn">import</span> <span class="n">Style</span>
-<span class="kn">from</span> <span class="nn">simpletex.formatting.font</span> <span class="kn">import</span> <span class="n">Font</span>
-<span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Centering</span><span class="p">,</span> <span class="n">Italics</span><span class="p">,</span> <span class="n">SmallCaps</span>
-
-<span class="n">Title</span> <span class="o">=</span> <span class="n">Style</span><span class="p">()</span>
-<span class="n">Title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;Bebas Neue Bold&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>
-
-<span class="n">Subtitle</span> <span class="o">=</span> <span class="n">Style</span><span class="p">()</span>
-<span class="n">Subtitle</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">))</span>
-
-<span class="n">Section</span><span class="o">.</span><span class="n">heading</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;Open Sans Semibold&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">))</span>
-
-<span class="n">Subsection</span><span class="o">.</span><span class="n">heading</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;Open Sans Semibold&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">Subsection</span><span class="o">.</span><span class="n">heading</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Italics</span><span class="p">())</span>
-<span class="n">Subsection</span><span class="o">.</span><span class="n">heading</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Centering</span><span class="p">())</span>
-
-<span class="n">usepackage</span><span class="p">(</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="s1">&#39;0.5in&#39;</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">Document</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s1">&#39;11pt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">doc</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">Centering</span><span class="p">():</span>
-        <span class="n">write_break</span><span class="p">(</span><span class="n">Title</span><span class="p">(</span><span class="s1">&#39;Example Title Text&#39;</span><span class="p">))</span>
-        <span class="k">with</span> <span class="n">Subtitle</span><span class="p">:</span>
-            <span class="n">write_break</span><span class="p">(</span><span class="s2">&quot;Example Subtitle Text&quot;</span><span class="p">)</span>
-            <span class="n">write_break</span><span class="p">(</span><span class="s2">&quot;More Subtitle Text&quot;</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;Section Name&#39;</span><span class="p">):</span>
-        <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Example section text.&#39;</span><span class="p">)</span>
-        <span class="n">write</span><span class="p">(</span><span class="n">SmallCaps</span><span class="p">()(</span><span class="s1">&#39;Lorem ipsum dolor si amet.&#39;</span><span class="p">))</span>
-        <span class="k">with</span> <span class="n">Subsection</span><span class="p">(</span><span class="s1">&#39;Subsection Name&#39;</span><span class="p">):</span>
-            <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
-
-<span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.tex&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>simpletex will automatically register all fonts and apply section formatting with titlesec, importing all required packages. It will cleanly format and indent the resulting TeX output:</p>
-<div class="highlight-tex"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
-
-<span class="k">\usepackage</span><span class="na">[margin=0.5in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>xltxtra<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>anyfontsize<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>titlesec<span class="nb">}</span>
-
-<span class="k">\newfontfamily\BebasNeueBold</span><span class="na">[Mapping=tex-text]</span><span class="nb">{</span>Bebas Neue Bold<span class="nb">}</span>
-<span class="k">\newfontfamily\TimesNewRoman</span><span class="na">[Mapping=tex-text]</span><span class="nb">{</span>Times New Roman<span class="nb">}</span>
-<span class="k">\newfontfamily\OpenSansSemibold</span><span class="na">[Mapping=tex-text]</span><span class="nb">{</span>Open Sans Semibold<span class="nb">}</span>
-
-<span class="k">\titleformat*</span><span class="nb">{</span><span class="k">\subsection</span><span class="nb">}{</span><span class="k">\centering\itshape\fontsize</span><span class="nb">{</span>12<span class="nb">}{</span>15<span class="nb">}</span><span class="k">\OpenSansSemibold</span> <span class="nb">}</span>
-<span class="k">\titleformat*</span><span class="nb">{</span><span class="k">\section</span><span class="nb">}{</span><span class="k">\fontsize</span><span class="nb">{</span>16<span class="nb">}{</span>20<span class="nb">}</span><span class="k">\OpenSansSemibold</span> <span class="nb">}</span>
-
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-    <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-            <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>40<span class="nb">}{</span>52<span class="nb">}</span><span class="k">\BebasNeueBold</span> Example Title Text<span class="nb">}</span> <span class="k">\\</span>
-            <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>11<span class="nb">}{</span>14<span class="nb">}</span><span class="k">\TimesNewRoman</span> Example Subtitle Text <span class="k">\\</span>
-            More Subtitle Text <span class="k">\\</span><span class="nb">}</span>
-    <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-    <span class="k">\section</span><span class="nb">{</span>Section Name<span class="nb">}</span>
-            Example section text.
-            <span class="k">\textsc</span><span class="nb">{</span>Lorem ipsum dolor si amet.<span class="nb">}</span>
-            <span class="k">\subsection</span><span class="nb">{</span>Subsection Name<span class="nb">}</span>
-                    Hello World!
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</pre></div>
-</div>
-<p>Output:</p>
-<img alt="Generated PDF" src="_images/font.png" />
-<p>Contents:</p>
+<p>For a quick introduction to using simpletex, please refer to the <span class="xref doc">tutorial</span>. For an overview of simpletex&#8217;s functionality, please see the <a class="reference internal" href="examples.html"><span class="doc">Examples</span></a>.</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
 </div>
 
 
@@ -144,8 +69,10 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">simpletex: Simple LaTeX Documents</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">simpletex: Simple LaTeX Documents</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+</ul>
+</li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>
