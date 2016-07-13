@@ -1,5 +1,7 @@
 """
-This section provides utilities to define a document's basic structure.
+Document Structure
+==================
+This module provides utilities to define a document's basic structure.
 
 ..  :copyright: (c) 2016 by Samuel Li.
     :license: GNU GPLv3, see License for more details.
@@ -12,23 +14,23 @@ from simpletex.formatting import Style
 from simpletex.formatting.core import Indent
 from simpletex.registry.formatting import TitleFormatRegistry
 
+__all__ = ['Document', 'Section', 'Subsection']
+
 
 class Document(Environment):
     """A class which manages a LaTeX document.
 
     This class does NOT manage the preamble
     (imports, newcommand declarations, etc.).
-    The preamble is managed by the ``simpletex.Preamble`` class.
-    Upon instantiation, loads sets the input encoding to UTF-8
+    The preamble is managed by the `simpletex.Preamble` class.
+    Upon instantiation, loads the input encoding to UTF-8
     and declares the document class.
     """
     def __init__(self, documentClass='article', size='12pt'):
         """
-        Args
-        ----
-        documentClass : string
+        documentClass : str
             LaTeX class name
-        size : string
+        size : str
             default font size
         """
         super().__init__('document')
@@ -64,14 +66,24 @@ class Title(Environment):
 
 
 class Section(Title):
+    """Represents a LaTeX section."""
     heading = Style(inline=True)
 
     def __init__(self, name):
+        """
+        name : str
+            section name
+        """
         super().__init__('section', name)
 
 
 class Subsection(Title):
+    """Represents a LaTeX subsection."""
     heading = Style(inline=True)
 
     def __init__(self, name):
+        """
+        name : str
+            subsection name
+        """
         super().__init__('subsection', name)

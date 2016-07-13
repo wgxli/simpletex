@@ -103,6 +103,7 @@ exclude_patterns = []
 # unit titles (such as .. function::).
 #
 # add_module_names = True
+autoclass_content = 'both'
 
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.

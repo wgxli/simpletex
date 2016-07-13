@@ -42,16 +42,47 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-simpletex.document">
-<span id="document-structure"></span><h1>Document Structure<a class="headerlink" href="#module-simpletex.document" title="Permalink to this headline">¶</a></h1>
-<p>This section provides utilities to define a document&#8217;s basic structure.</p>
+  <span class="target" id="module-simpletex.document"></span><div class="section" id="document-structure">
+<h1>Document Structure<a class="headerlink" href="#document-structure" title="Permalink to this headline">¶</a></h1>
+<p>This module provides utilities to define a document&#8217;s basic structure.</p>
 <dl class="class">
 <dt id="simpletex.document.Document">
 <em class="property">class </em><code class="descclassname">simpletex.document.</code><code class="descname">Document</code><span class="sig-paren">(</span><em>documentClass='article'</em>, <em>size='12pt'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/document.html#Document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.document.Document" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class which manages a LaTeX document.</p>
-<p>This class does NOT manage the preamble (imports, newcommand declarations, etc.).
-The preamble is managed by the <code class="docutils literal"><span class="pre">simpletex.Preamble</span></code> class.
-Upon instantiation, loads sets the input encoding to UTF-8 and declares the document class.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.base.Environment</span></code></p>
+<p>A class which manages a LaTeX document.</p>
+<p>This class does NOT manage the preamble
+(imports, newcommand declarations, etc.).
+The preamble is managed by the <cite>simpletex.Preamble</cite> class.
+Upon instantiation, loads the input encoding to UTF-8
+and declares the document class.</p>
+<dl class="docutils">
+<dt>documentClass</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>LaTeX class name</dd>
+<dt>size</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>default font size</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="simpletex.document.Section">
+<em class="property">class </em><code class="descclassname">simpletex.document.</code><code class="descname">Section</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/document.html#Section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.document.Section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.document.Title</span></code></p>
+<p>Represents a LaTeX section.</p>
+<dl class="docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>section name</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="simpletex.document.Subsection">
+<em class="property">class </em><code class="descclassname">simpletex.document.</code><code class="descname">Subsection</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/document.html#Subsection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.document.Subsection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.document.Title</span></code></p>
+<p>Represents a LaTeX subsection.</p>
+<dl class="docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>subsection name</dd>
+</dl>
 </dd></dl>
 
 </div>

@@ -42,7 +42,9 @@
             
   <h1>Source code for simpletex.document</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This section provides utilities to define a document&#39;s basic structure.</span>
+<span class="sd">Document Structure</span>
+<span class="sd">==================</span>
+<span class="sd">This module provides utilities to define a document&#39;s basic structure.</span>
 
 <span class="sd">..  :copyright: (c) 2016 by Samuel Li.</span>
 <span class="sd">    :license: GNU GPLv3, see License for more details.</span>
@@ -55,60 +57,79 @@
 <span class="kn">from</span> <span class="nn">simpletex.formatting.core</span> <span class="k">import</span> <span class="n">Indent</span>
 <span class="kn">from</span> <span class="nn">simpletex.registry.formatting</span> <span class="k">import</span> <span class="n">TitleFormatRegistry</span>
 
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Document&#39;</span><span class="p">,</span> <span class="s1">&#39;Section&#39;</span><span class="p">,</span> <span class="s1">&#39;Subsection&#39;</span><span class="p">]</span>
+
+
 <div class="viewcode-block" id="Document"><a class="viewcode-back" href="../../document_structure.html#simpletex.document.Document">[docs]</a><span class="k">class</span> <span class="nc">Document</span><span class="p">(</span><span class="n">Environment</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A class which manages a LaTeX document.</span>
 
-<span class="sd">    This class does NOT manage the preamble (imports, newcommand declarations, etc.).</span>
-<span class="sd">    The preamble is managed by the ``simpletex.Preamble`` class.</span>
-<span class="sd">    Upon instantiation, loads sets the input encoding to UTF-8 and declares the document class.</span>
+<span class="sd">    This class does NOT manage the preamble</span>
+<span class="sd">    (imports, newcommand declarations, etc.).</span>
+<span class="sd">    The preamble is managed by the `simpletex.Preamble` class.</span>
+<span class="sd">    Upon instantiation, loads the input encoding to UTF-8</span>
+<span class="sd">    and declares the document class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">documentClass</span><span class="o">=</span><span class="s1">&#39;article&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;12pt&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args</span>
-<span class="sd">        ----</span>
-<span class="sd">        documentClass : string</span>
+<span class="sd">        documentClass : str</span>
 <span class="sd">            LaTeX class name</span>
-<span class="sd">        size : string</span>
+<span class="sd">        size : str</span>
 <span class="sd">            default font size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;document&#39;</span><span class="p">)</span>
-        <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">classDeclaration</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="s1">&#39;documentclass&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">documentClass</span><span class="p">],</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">classDeclaration</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="s1">&#39;documentclass&#39;</span><span class="p">,</span>
+                                                      <span class="p">[</span><span class="n">documentClass</span><span class="p">],</span>
+                                                      <span class="n">size</span><span class="p">)</span>
         <span class="n">usepackage</span><span class="p">(</span><span class="s1">&#39;inputenc&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span></div>
 
 
 <span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">Environment</span><span class="p">):</span>
     <span class="n">heading</span> <span class="o">=</span> <span class="n">Style</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_heading</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="n">command_name</span><span class="p">,</span> <span class="p">[</span><span class="n">name</span><span class="p">])</span>
         <span class="n">add_registry</span><span class="p">(</span><span class="s1">&#39;titleFormat&#39;</span><span class="p">,</span> <span class="n">TitleFormatRegistry</span><span class="p">())</span>
-        
+
     <span class="k">def</span> <span class="nf">format_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">:</span>
             <span class="n">usepackage</span><span class="p">(</span><span class="s1">&#39;titlesec&#39;</span><span class="p">)</span>
-            <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">titleFormat</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">)</span>
+            <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">titleFormat</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_heading</span><span class="p">,</span>
                                    <span class="n">Indent</span><span class="p">()(</span><span class="n">text</span><span class="p">)]))</span>
-    
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">command_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_heading</span><span class="o">.</span><span class="n">name</span>
+
     <span class="nd">@command_name</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">command_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_heading</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">value</span>
 
-        
-<span class="k">class</span> <span class="nc">Section</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Section"><a class="viewcode-back" href="../../document_structure.html#simpletex.document.Section">[docs]</a><span class="k">class</span> <span class="nc">Section</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents a LaTeX section.&quot;&quot;&quot;</span>
     <span class="n">heading</span> <span class="o">=</span> <span class="n">Style</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        name : str</span>
+<span class="sd">            section name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
 
-<span class="k">class</span> <span class="nc">Subsection</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
+<div class="viewcode-block" id="Subsection"><a class="viewcode-back" href="../../document_structure.html#simpletex.document.Subsection">[docs]</a><span class="k">class</span> <span class="nc">Subsection</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Represents a LaTeX subsection.&quot;&quot;&quot;</span>
     <span class="n">heading</span> <span class="o">=</span> <span class="n">Style</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;subsection&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        name : str</span>
+<span class="sd">            subsection name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;subsection&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
