@@ -19,5 +19,7 @@ simpletex is a Python library for automatically generating LaTeX documents. It i
     
     save('filename.tex')
 
+Output:
+.. image:: https://github.com/swe100/simpletex/blob/master/docs/source/images/basic.png
     
 Full documentation can be found at http://simpletex.readthedocs.io/.
