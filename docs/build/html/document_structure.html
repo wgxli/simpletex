@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; simpletex 0.1 documentation</title>
+    <title>Document Structure &mdash; simpletex 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,6 +25,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="simpletex 0.1 documentation" href="index.html" />
+    <link rel="up" title="Core LaTeX" href="core_latex.html" />
+    <link rel="next" title="Text Formatting" href="text_formatting.html" />
+    <link rel="prev" title="Core LaTeX" href="core_latex.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -40,56 +42,43 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
+  <div class="section" id="module-simpletex.document">
+<span id="document-structure"></span><h1>Document Structure<a class="headerlink" href="#module-simpletex.document" title="Permalink to this headline">¶</a></h1>
+<p>This section provides utilities to define a document&#8217;s basic structure.</p>
+<dl class="class">
+<dt id="simpletex.document.Document">
+<em class="property">class </em><code class="descclassname">simpletex.document.</code><code class="descname">Document</code><span class="sig-paren">(</span><em>documentClass='article'</em>, <em>size='12pt'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/document.html#Document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.document.Document" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class which manages a LaTeX document.</p>
+<p>This class does NOT manage the preamble (imports, newcommand declarations, etc.).
+The preamble is managed by the <code class="docutils literal"><span class="pre">simpletex.Preamble</span></code> class.
+Upon instantiation, loads sets the input encoding to UTF-8 and declares the document class.</p>
+</dd></dl>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- <a href="#D"><strong>D</strong></a>
- | <a href="#S"><strong>S</strong></a>
- 
 </div>
-<h2 id="D">D</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="document_structure.html#simpletex.document.Document">Document (class in simpletex.document)</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
-<h2 id="S">S</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="document_structure.html#module-simpletex.document">simpletex.document (module)</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="text_formatting.html#module-simpletex.formatting.text">simpletex.formatting.text (module)</a>
-  </dt>
-
-  </dl></td>
-</tr></table>
-
 
 
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-
-   <div class="relations">
+        <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="core_latex.html">Core LaTeX</a><ul>
+      <li>Previous: <a href="core_latex.html" title="previous chapter">Core LaTeX</a></li>
+      <li>Next: <a href="text_formatting.html" title="next chapter">Text Formatting</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
-
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/document_structure.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -111,6 +100,9 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
+      |
+      <a href="_sources/document_structure.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

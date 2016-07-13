@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; simpletex 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="simpletex 0.1 documentation" href="index.html" />
+    <link rel="next" title="Core LaTeX" href="core_latex.html" />
+    <link rel="prev" title="Installation Instructions" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial covers the basic usage, advanced features, and third-party support of simpletex. For further usage examples, please see the <a class="reference internal" href="examples.html"><span class="doc">Examples</span></a>.</p>
+<div class="section" id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-our-first-document">
+<h3>Creating Our First Document<a class="headerlink" href="#creating-our-first-document" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span>
+<span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span>
+
+<span class="k">with</span> <span class="n">Document</span><span class="p">():</span>
+        <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;hello_world.tex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That wasn&#8217;t so hard, was it?</p>
+</div>
+<div class="section" id="sections-and-formatting">
+<h3>Sections and Formatting<a class="headerlink" href="#sections-and-formatting" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s create a document with two sections:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span>
+<span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span>
+
+<span class="k">with</span> <span class="n">Document</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">):</span>
+                <span class="n">write</span><span class="p">(</span><span class="s1">&#39;First Section Text&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">):</span>
+                <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Second Section Text&#39;</span><span class="p">)</span>
+
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;section_basics.tex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Easy enough. Let&#8217;s italicize all the section headings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span>
+<span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span>
+<span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Italics</span>
+
+<span class="n">Section</span><span class="o">.</span><span class="n">heading</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Italics</span><span class="p">())</span>
+
+<span class="k">with</span> <span class="n">Document</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">):</span>
+                <span class="n">write</span><span class="p">(</span><span class="s1">&#39;First Section Text&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">):</span>
+                <span class="n">write</span><span class="p">(</span><span class="s1">&#39;Second Section Text&#39;</span><span class="p">)</span>
+
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;section_basics.tex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pretty good for two additional lines.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
+<li><a class="reference internal" href="#creating-our-first-document">Creating Our First Document</a></li>
+<li><a class="reference internal" href="#sections-and-formatting">Sections and Formatting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="install.html" title="previous chapter">Installation Instructions</a></li>
+      <li>Next: <a href="core_latex.html" title="next chapter">Core LaTeX</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tutorial.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Samuel Li.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/tutorial.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -24,3 +24,12 @@ Getting Started
 
     install
     tutorial
+    
+API Documentation
+-----------------
+.. toctree::
+    :maxdepth: 1
+
+    core_latex
+	xetex
+	third_party

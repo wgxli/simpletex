@@ -1,3 +1,5 @@
+"""This module provides utilities to perform basic text formatting."""
+
 from simpletex.core import Formatter
 from simpletex.base import Command, Environment
 
@@ -34,14 +36,3 @@ class SmallCaps(SimpleFormatter):
 class Emphasis(SimpleFormatter):
     def __init__(self, inline=False):
         super().__init__('emph', 'em', inline)
-        
-
-class Centering(Environment):
-    def __init__(self, inline=False):
-        super().__init__('center')
-        self._inline = inline
-    def format_text(self, text: str) -> str:
-        if self._inline:
-            return '{}{}'.format(Command('centering'), text)
-        else:
-            return super().format_text(text)

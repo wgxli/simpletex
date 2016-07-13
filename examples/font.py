@@ -2,7 +2,8 @@ from simpletex import write, write_break, save, usepackage
 from simpletex.document import Document, Section, Subsection
 from simpletex.formatting import Style
 from simpletex.formatting.font import Font
-from simpletex.formatting.text import Centering, Italics, SmallCaps
+from simpletex.formatting.text import Italics, SmallCaps
+from simpletex.formatting.layout import Centering
 
 Title = Style()
 Title.apply(Font('Bebas Neue Bold', size=40))

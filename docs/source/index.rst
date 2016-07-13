@@ -25,9 +25,11 @@ Getting Started
     install
     tutorial
     
-Advanced Usage
---------------
+API Documentation
+-----------------
 .. toctree::
     :maxdepth: 1
 
-    internals
+    core_latex
+	xetex
+	third_party

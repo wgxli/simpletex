@@ -43,6 +43,8 @@
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-code">
+<h3>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span>
 <span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Subsection</span>
 
@@ -54,11 +56,12 @@
 <span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.tex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>TeX Output:</p>
+</div>
+<div class="section" id="tex-output">
+<h3>TeX Output<a class="headerlink" href="#tex-output" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-tex"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>xltxtra<span class="nb">}</span>
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
         <span class="k">\section</span><span class="nb">{</span>Section Name<span class="nb">}</span>
@@ -67,16 +70,80 @@
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </pre></div>
 </div>
-<p>PDF Output:</p>
+</div>
+<div class="section" id="pdf-output">
+<h3>PDF Output<a class="headerlink" href="#pdf-output" title="Permalink to this headline">¶</a></h3>
 <img alt="Generated PDF" src="_images/basic.png" />
+</div>
+</div>
+<div class="section" id="simple-list-and-text-formatting">
+<h2>Simple List and Text Formatting<a class="headerlink" href="#simple-list-and-text-formatting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Python Code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">alias</span>
+<span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Subsection</span>
+<span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Bold</span><span class="p">,</span> <span class="n">Italics</span><span class="p">,</span> <span class="n">Underline</span><span class="p">,</span> <span class="n">Emphasis</span><span class="p">,</span> <span class="n">SmallCaps</span>
+<span class="kn">from</span> <span class="nn">simpletex.sequences</span> <span class="kn">import</span> <span class="n">OrderedList</span><span class="p">,</span> <span class="n">UnorderedList</span>
+
+<span class="n">UnorderedList</span><span class="o">.</span><span class="n">bullet</span> <span class="o">=</span> <span class="s1">&#39;&gt;&#39;</span>
+
+<span class="k">with</span> <span class="n">Document</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s1">&#39;11pt&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">Section</span><span class="p">(</span><span class="s1">&#39;Section Name&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">UnorderedList</span><span class="p">():</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">Bold</span><span class="p">()(</span><span class="s1">&#39;Bold Text&#39;</span><span class="p">))</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">Italics</span><span class="p">()(</span><span class="s1">&#39;Italic Text&#39;</span><span class="p">))</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">Underline</span><span class="p">()(</span><span class="s1">&#39;Underlined Text&#39;</span><span class="p">))</span>
+            <span class="k">with</span> <span class="n">Underline</span><span class="p">():</span>
+                <span class="n">write</span><span class="p">(</span><span class="s1">&#39;More Underlined Text&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">Subsection</span><span class="p">(</span><span class="s1">&#39;Subsection Name&#39;</span><span class="p">):</span>
+            <span class="n">write</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumps over the lazy dog.&#39;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">OrderedList</span><span class="p">():</span>
+                <span class="n">write</span><span class="p">(</span><span class="n">Emphasis</span><span class="p">()(</span><span class="s1">&#39;Emphasized Text&#39;</span><span class="p">))</span>
+                <span class="n">write</span><span class="p">(</span><span class="n">SmallCaps</span><span class="p">()(</span><span class="s1">&#39;Small Caps&#39;</span><span class="p">))</span>
+
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.tex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>TeX Output<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-tex"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+        <span class="k">\section</span><span class="nb">{</span>Section Name<span class="nb">}</span>
+                <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+                        <span class="k">\item</span><span class="na">[&gt;]</span> <span class="k">\textbf</span><span class="nb">{</span>Bold Text<span class="nb">}</span>
+                        <span class="k">\item</span><span class="na">[&gt;]</span> <span class="k">\textit</span><span class="nb">{</span>Italic Text<span class="nb">}</span>
+                        <span class="k">\item</span><span class="na">[&gt;]</span> <span class="k">\underline</span><span class="nb">{</span>Underlined Text<span class="nb">}</span>
+                        <span class="k">\item</span><span class="na">[&gt;]</span> <span class="k">\underline</span><span class="nb">{</span>More Underlined Text<span class="nb">}</span>
+                <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+                <span class="k">\subsection</span><span class="nb">{</span>Subsection Name<span class="nb">}</span>
+                        The quick brown fox jumps over the lazy dog.
+                        <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+                                <span class="k">\item</span> <span class="k">\emph</span><span class="nb">{</span>Emphasized Text<span class="nb">}</span>
+                                <span class="k">\item</span> <span class="k">\textsc</span><span class="nb">{</span>Small Caps<span class="nb">}</span>
+                        <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>PDF Output<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<img alt="Generated PDF" src="_images/list_formatting.png" />
+</div>
 </div>
 <div class="section" id="xetex-support-and-fonts">
 <h2>XeTeX Support and Fonts<a class="headerlink" href="#xetex-support-and-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Python Code<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">write_break</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">usepackage</span>
 <span class="kn">from</span> <span class="nn">simpletex.document</span> <span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Subsection</span>
 <span class="kn">from</span> <span class="nn">simpletex.formatting</span> <span class="kn">import</span> <span class="n">Style</span>
 <span class="kn">from</span> <span class="nn">simpletex.formatting.font</span> <span class="kn">import</span> <span class="n">Font</span>
-<span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Centering</span><span class="p">,</span> <span class="n">Italics</span><span class="p">,</span> <span class="n">SmallCaps</span>
+<span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Italics</span><span class="p">,</span> <span class="n">SmallCaps</span>
+    <span class="kn">from</span> <span class="nn">simpletex.formatting.layout</span> <span class="kn">import</span> <span class="n">Centering</span>
 
 <span class="n">Title</span> <span class="o">=</span> <span class="n">Style</span><span class="p">()</span>
 <span class="n">Title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">Font</span><span class="p">(</span><span class="s1">&#39;Bebas Neue Bold&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>
@@ -106,7 +173,9 @@
 <span class="n">save</span><span class="p">(</span><span class="s1">&#39;filename.tex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>TeX Output:</p>
+</div>
+<div class="section" id="id5">
+<h3>TeX Output<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-tex"><div class="highlight"><pre><span></span><span class="k">\documentclass</span><span class="na">[11pt]</span><span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="na">[margin=0.5in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
@@ -124,21 +193,24 @@
 <span class="k">\titleformat*</span><span class="nb">{</span><span class="k">\section</span><span class="nb">}{</span><span class="k">\fontsize</span><span class="nb">{</span>16<span class="nb">}{</span>20<span class="nb">}</span><span class="k">\OpenSansSemibold</span> <span class="nb">}</span>
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-    <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-            <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>40<span class="nb">}{</span>52<span class="nb">}</span><span class="k">\BebasNeueBold</span> Example Title Text<span class="nb">}</span> <span class="k">\\</span>
-            <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>11<span class="nb">}{</span>14<span class="nb">}</span><span class="k">\TimesNewRoman</span> Example Subtitle Text <span class="k">\\</span>
-            More Subtitle Text <span class="k">\\</span><span class="nb">}</span>
-    <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-    <span class="k">\section</span><span class="nb">{</span>Section Name<span class="nb">}</span>
-            Example section text.
-            <span class="k">\textsc</span><span class="nb">{</span>Lorem ipsum dolor si amet.<span class="nb">}</span>
-            <span class="k">\subsection</span><span class="nb">{</span>Subsection Name<span class="nb">}</span>
-                    Hello World!
+        <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+                <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>40<span class="nb">}{</span>52<span class="nb">}</span><span class="k">\BebasNeueBold</span> Example Title Text<span class="nb">}</span> <span class="k">\\</span>
+                <span class="nb">{</span><span class="k">\fontsize</span><span class="nb">{</span>11<span class="nb">}{</span>14<span class="nb">}</span><span class="k">\TimesNewRoman</span> Example Subtitle Text <span class="k">\\</span>
+                More Subtitle Text <span class="k">\\</span><span class="nb">}</span>
+        <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+        <span class="k">\section</span><span class="nb">{</span>Section Name<span class="nb">}</span>
+                Example section text.
+                <span class="k">\textsc</span><span class="nb">{</span>Lorem ipsum dolor si amet.<span class="nb">}</span>
+                <span class="k">\subsection</span><span class="nb">{</span>Subsection Name<span class="nb">}</span>
+                        Hello World!
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </pre></div>
 </div>
-<p>PDF Output:</p>
+</div>
+<div class="section" id="id6">
+<h3>PDF Output<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <img alt="Generated PDF" src="_images/font.png" />
+</div>
 </div>
 </div>
 
@@ -151,8 +223,24 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Examples</a><ul>
-<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
-<li><a class="reference internal" href="#xetex-support-and-fonts">XeTeX Support and Fonts</a></li>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
+<li><a class="reference internal" href="#python-code">Python Code</a></li>
+<li><a class="reference internal" href="#tex-output">TeX Output</a></li>
+<li><a class="reference internal" href="#pdf-output">PDF Output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simple-list-and-text-formatting">Simple List and Text Formatting</a><ul>
+<li><a class="reference internal" href="#id1">Python Code</a></li>
+<li><a class="reference internal" href="#id2">TeX Output</a></li>
+<li><a class="reference internal" href="#id3">PDF Output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xetex-support-and-fonts">XeTeX Support and Fonts</a><ul>
+<li><a class="reference internal" href="#id4">Python Code</a></li>
+<li><a class="reference internal" href="#id5">TeX Output</a></li>
+<li><a class="reference internal" href="#id6">PDF Output</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,5 @@
+Basic Document Structure
+========================
+This section outlines classes relating to basic LaTeX document structure.
+
+.. automodule:: simpletex.document

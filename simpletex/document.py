@@ -1,3 +1,10 @@
+"""
+This section provides utilities to define a document's basic structure.
+
+..  :copyright: (c) 2016 by Samuel Li.
+    :license: GNU GPLv3, see License for more details.
+"""
+
 import simpletex
 from simpletex import usepackage, add_registry
 from simpletex.base import Environment, Command
@@ -6,7 +13,21 @@ from simpletex.formatting.core import Indent
 from simpletex.registry.formatting import TitleFormatRegistry
 
 class Document(Environment):
+    """A class which manages a LaTeX document.
+
+    This class does NOT manage the preamble (imports, newcommand declarations, etc.).
+    The preamble is managed by the ``simpletex.Preamble`` class.
+    Upon instantiation, loads sets the input encoding to UTF-8 and declares the document class.
+    """
     def __init__(self, documentClass='article', size='12pt'):
+        """
+        Args
+        ----
+        documentClass : string
+            LaTeX class name
+        size : string
+            default font size
+        """
         super().__init__('document')
         simpletex._CONTEXT.classDeclaration = Command('documentclass', [documentClass], size)
         usepackage('inputenc', 'utf8')
