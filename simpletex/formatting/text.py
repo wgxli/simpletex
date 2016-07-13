@@ -1,7 +1,13 @@
-"""This module provides utilities to perform basic text formatting."""
+"""
+This module provides utilities to perform basic text formatting.
+
+..  :copyright: (c) 2016 by Samuel Li.
+    :license: GNU GPLv3, see License for more details.
+"""
 
 from simpletex.core import Formatter
 from simpletex.base import Command, Environment
+
 
 class SimpleFormatter(Formatter):
     def __init__(self, command_name, inline_name, inline=False):
@@ -9,6 +15,7 @@ class SimpleFormatter(Formatter):
         self.command_name = command_name
         self.inline_name = inline_name
         self._inline = inline
+
     def format_text(self, text: str) -> str:
         if self._inline:
             return '{}{}'.format(Command(self.inline_name),
@@ -21,17 +28,21 @@ class Bold(SimpleFormatter):
     def __init__(self, inline=False):
         super().__init__('textbf', 'bfshape', inline)
 
+
 class Italics(SimpleFormatter):
     def __init__(self, inline=False):
         super().__init__('textit', 'itshape', inline)
+
 
 class Underline(SimpleFormatter):
     def __init__(self, inline=False):
         super().__init__('underline', 'underline', inline)
 
+
 class SmallCaps(SimpleFormatter):
     def __init__(self, inline=False):
         super().__init__('textsc', 'scshape', inline)
+
 
 class Emphasis(SimpleFormatter):
     def __init__(self, inline=False):

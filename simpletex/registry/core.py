@@ -1,10 +1,11 @@
 from simpletex.core import Registry
 from simpletex.base import Command
 
+
 class ImportRegistry(Registry):
     def __init__(self):
         super().__init__()
-        
+
     @staticmethod
     def _entry_line(entry, value):
         args, kwargs = value

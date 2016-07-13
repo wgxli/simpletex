@@ -1,6 +1,7 @@
 from simpletex.core import Registry
 from simpletex.base import Command
 
+
 class FontRegistry(Registry):
     def __init__(self):
         super().__init__()
@@ -9,9 +10,9 @@ class FontRegistry(Registry):
     def _entry_line(font, _):
         return "{}{}".format(Command('newfontfamily'),
                              Command(FontRegistry._font_name(font),
-                                    [font],
+                                     [font],
                                      Mapping='tex-text'))
-    
+
     @staticmethod
     def _font_name(font):
         return font.replace(" ", "")

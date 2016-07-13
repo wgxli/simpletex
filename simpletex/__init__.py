@@ -14,13 +14,13 @@ class _Preamble(Text):
         self.body = Paragraph()
 
     def write(self, text):
-        #Move body last
+        # Move body last
         self._order.remove('body')
         self._order.append('body')
         self.body.write(text)
 
     def __str__(self):
-        #Prevent race conditions
+        # Prevent race conditions
         list(map(str, self))
         return '\n\n'.join(str(item) for item in self if str(item))
 
@@ -29,30 +29,30 @@ class _GlobalContextManager(object):
     def __init__(self):
         super().__setattr__('preamble', _Preamble())
         super().__setattr__('contextStack', [self.preamble])
-        
+
     def push(self, context):
         self.contextStack.append(context)
-        
+
     def pop(self):
         return self.contextStack.pop()
-    
+
     @property
     def top(self):
         return self.contextStack[-1]
-    
+
     def write(self, text):
         self.top.write(text)
-        
+
     def save(self, name):
         with codecs.open(name, "w", "utf-8") as f:
             f.write(str(self.preamble))
-            #Reset the stack
+            # Reset the stack
             super().__setattr__('preamble', _Preamble())
 
     def add_registry(self, name, registry):
         if name not in self:
             setattr(self, name, registry)
-    
+
     def __getattr__(self, name):
         return getattr(self.preamble, name)
 
@@ -61,7 +61,7 @@ class _GlobalContextManager(object):
 
     def __contains__(self, name):
         return name in self.preamble
-    
+
 
 _CONTEXT = _GlobalContextManager()
 
@@ -80,28 +80,35 @@ _LATEX_ESCAPE_DICT = {
     '-': r'{-}'
 }
 
+
 def _latex_escape(text):
     return ''.join(_LATEX_ESCAPE_DICT.get(char, char) for char in text)
+
 
 def write(text):
     """Escapes the given string and writes it to current top-level context."""
     _CONTEXT.write(_latex_escape(str(text)))
-    
+
+
 def write_break(text):
     """Escapes the given string and writes it to current top-level context,
     adding a trailing LaTeX line break."""
     _CONTEXT.write(_latex_escape(str(text)) + r' \\')
 
+
 def add_registry(name, registry):
     """Adds a registry under the given name if not already present."""
     _CONTEXT.add_registry(name, registry)
 
+
 def usepackage(name, *args, **kwargs):
     _CONTEXT.imports.register(name, [args, kwargs])
-    
+
+
 def alias(name, definition):
     _CONTEXT.commandDefinitions.register(name, definition)
     return Command(name)
-    
+
+
 def save(filename):
     _CONTEXT.save(filename)

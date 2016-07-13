@@ -1,5 +1,6 @@
 from simpletex.core import Formatter
 
+
 class Style(Formatter):
     def __init__(self, inline=False):
         super().__init__()
@@ -8,7 +9,8 @@ class Style(Formatter):
 
     def apply(self, formatter):
         if not isinstance(formatter, Formatter):
-            raise TypeError('{} is not a Formatter.'.format(formatter.__class__.__name__))
+            errorString = '{} is not a Formatter.'
+            raise TypeError(errorString.format(formatter.__class__.__name__))
         formatter._inline = self._inline
         self._formatters.append(formatter)
 
@@ -16,7 +18,7 @@ class Style(Formatter):
         for formatter in self._formatters:
             text = formatter(text)
         return text
-    
+
     def __bool__(self):
         return bool(self._formatters)
 
