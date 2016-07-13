@@ -74,6 +74,8 @@ class Paragraph:
         pass
     
 
+# Used in the preamble to organize declarations.
+# Each registry is responsible for keeping track of and formatting a type of declaration (imports, font declarations, etc.)
 class Registry:
     def __init__(self):
         super().__init__()
@@ -83,15 +85,21 @@ class Registry:
         return iter(self._entries)
 
     def items(self):
+        """Returns an iterator over the key-value pairs in the registry."""
         return self._entries.items()
         
     def register(self, key, value=None):
+        """Registers an entry under the given key, if not already present."""
         self._entries.setdefault(key, value)
-        
+
+    #Should be overridden in subclasses
     @staticmethod
     def _entry_line(entry, value):
-        """Should be overridden by subclasses."""
+        """Formats a single registration entry as text."""
         return entry
+
+    # Generally should not be overridden
+    # Override _entry_line instead
     def __str__(self):
         return '\n'.join(str(self._entry_line(key, value)) for key, value in self.items())
 

@@ -19,6 +19,8 @@ class _Preamble(Text):
         self.body.write(text)
 
     def __str__(self):
+        #Prevent race conditions
+        list(map(str, self))
         return '\n\n'.join(str(item) for item in self if str(item))
 
 

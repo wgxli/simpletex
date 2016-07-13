@@ -1,8 +1,8 @@
-import latex
-from latex import usepackage, add_registry
-from latex.core import Formatter
-from latex.base import Command, Brace
-from latex.registry.formatting import FontRegistry
+import simpletex
+from simpletex import usepackage, add_registry
+from simpletex.core import Formatter
+from simpletex.base import Command, Brace
+from simpletex.registry.formatting import FontRegistry
 
 class SizeSelector(Formatter):
     def __init__(self, size, skip):
@@ -22,11 +22,11 @@ class FontSelector(Formatter):
         super().__init__()
         self.name = name
         add_registry('fontRegistry', FontRegistry())
-        latex._CONTEXT.fontRegistry.register(self.name)
+        simpletex._CONTEXT.fontRegistry.register(self.name)
         usepackage('fontspec')
         
     def format_text(self, text) -> str:
-        font_tex_name = latex._CONTEXT.fontRegistry._font_name(self.name)
+        font_tex_name = simpletex._CONTEXT.fontRegistry._font_name(self.name)
         return '{} {}'.format(Command(font_tex_name),
                               text)
 
