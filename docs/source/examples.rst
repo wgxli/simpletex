@@ -1,8 +1,9 @@
 Examples
 =================================
-
 Basic Usage
 -----------
+Python Code
+~~~~~~~~~~~
 .. code-block:: python
 
     from simpletex import write, save
@@ -15,8 +16,8 @@ Basic Usage
     
     save('filename.tex')
 
-TeX Output:
-
+TeX Output
+~~~~~~~~~~
 .. code-block:: tex
 
 
@@ -31,13 +32,15 @@ TeX Output:
 				Hello World!
 	\end{document}
 
-PDF Output:
-
+PDF Output
+~~~~~~~~~~
 .. image:: /_static/basic.png
    :alt: Generated PDF
 
 Simple List and Text Formatting
 -------------------------------
+Python Code
+~~~~~~~~~~~
 .. code-block:: python
 
 	from simpletex import write, save, alias
@@ -64,8 +67,8 @@ Simple List and Text Formatting
 	save('filename.tex')
 
 
-TeX Output:
-
+TeX Output
+~~~~~~~~~~
 .. code-block:: tex
 
 
@@ -90,8 +93,8 @@ TeX Output:
 				\end{enumerate}
 	\end{document}
 
-PDF Output:
-
+PDF Output
+~~~~~~~~~~
 .. image:: /_static/list_formatting.png
    :alt: Generated PDF
 
@@ -99,6 +102,8 @@ PDF Output:
 XeTeX Support and Fonts
 -----------------------
 
+Python Code
+~~~~~~~~~~~
 .. code-block:: python
 
 
@@ -135,8 +140,8 @@ XeTeX Support and Fonts
     
     save('filename.tex')
 
-TeX Output:
-
+TeX Output
+~~~~~~~~~~
 .. code-block:: tex
 
 
@@ -170,7 +175,7 @@ TeX Output:
 	\end{document}
 
 
-PDF Output:
-
+PDF Output
+~~~~~~~~~~
 .. image:: /_static/font.png
    :alt: Generated PDF
