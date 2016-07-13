@@ -58,6 +58,40 @@ It fully supports XeTeX and text styling:
     
     save('filename.tex')
 
+simpletex will automatically register all fonts and apply section formatting with titlesec, importing all required packages:
+
+.. code-block:: tex
+
+
+    \documentclass[11pt]{article}
+    
+    \usepackage[margin=0.5in]{geometry}
+    \usepackage[utf8]{inputenc}
+    \usepackage{xltxtra}
+    \usepackage{fontspec}
+    \usepackage{anyfontsize}
+    \usepackage{titlesec}
+    
+    \newfontfamily\BebasNeueBold[Mapping=tex-text]{Bebas Neue Bold}
+    \newfontfamily\TimesNewRoman[Mapping=tex-text]{Times New Roman}
+    \newfontfamily\OpenSansSemibold[Mapping=tex-text]{Open Sans Semibold}
+    
+    \titleformat*{\subsection}{\centering\itshape\fontsize{12}{15}\OpenSansSemibold }
+    \titleformat*{\section}{\fontsize{16}{20}\OpenSansSemibold }
+    
+    \begin{document}
+    	\begin{center}
+    		{\fontsize{40}{52}\BebasNeueBold Example Title Text} \\
+    		{\fontsize{11}{14}\TimesNewRoman Example Subtitle Text \\
+    		More Subtitle Text \\}
+    	\end{center}
+    	\section{Section Name}
+    		Example section text.
+    		\textsc{Lorem ipsum dolor si amet.}
+    		\subsection{Subsection Name}
+    			Hello World!
+    \end{document}
+
 Output:
 
 .. figure:: https://github.com/swe100/simpletex/blob/master/docs/source/images/font.png
