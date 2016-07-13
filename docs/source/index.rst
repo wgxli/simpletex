@@ -58,7 +58,7 @@ It fully supports XeTeX and text styling:
     
     save('filename.tex')
 
-simpletex will automatically register all fonts and apply section formatting with titlesec, importing all required packages:
+simpletex will automatically register all fonts and apply section formatting with titlesec, importing all required packages. It will cleanly format and indent the resulting TeX output:
 
 .. code-block:: tex
 
