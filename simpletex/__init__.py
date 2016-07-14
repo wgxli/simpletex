@@ -85,7 +85,8 @@ _LATEX_ESCAPE_DICT = {
 
 
 def _latex_escape(text) -> str:
-    return ''.join(str(_LATEX_ESCAPE_DICT.get(char, char)) for char in str(text))
+    return ''.join(str(_LATEX_ESCAPE_DICT.get(char, char))
+                   for char in str(text))
 
 
 def write(text):

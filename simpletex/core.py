@@ -56,7 +56,7 @@ class Text:
 
     def __enter__(self):
         error_string = "Can't use {} as a context manager."
-        raise TypeError(error_string.format(self.__class__.name))
+        raise TypeError(error_string.format(self.__class__.__name__))
 
     def __exit__(self, *args):
         pass
@@ -70,6 +70,9 @@ class Paragraph:
     def __iter__(self):
         return iter(self._text)
 
+    def __len__(self):
+        return len(self._text)
+
     def write(self, text):
         self._text.append(text)
 
@@ -78,7 +81,7 @@ class Paragraph:
 
     def __enter__(self):
         error_string = "Can't use {} as a context manager."
-        raise TypeError(error_string.format(self.__class__.name))
+        raise TypeError(error_string.format(self.__class__.__name__))
 
     def __exit__(self, *args):
         pass
@@ -94,6 +97,12 @@ class Registry:
 
     def __iter__(self):
         return iter(self._entries)
+
+    def __contains__(self, item):
+        return item in self._entries
+
+    def __len__(self):
+        return len(self._entries)
 
     def items(self):
         """Returns an iterator over the key-value pairs in the registry."""
