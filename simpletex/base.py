@@ -1,4 +1,4 @@
-from simpletex.core import Text, Paragraph, Formatter
+from simpletex.core import Text, Formatter
 from simpletex.formatting.core import Indent
 
 
@@ -15,10 +15,10 @@ class OptionFormatter(Formatter):
         super().__init__()
 
     def __call__(self, *args, **kwargs):
-        kwargStrings = ['{}={}'.format(k, v) for k, v in kwargs.items()]
-        optionString = ', '.join(list(args) + kwargStrings)
-        if optionString:
-            return '[{}]'.format(optionString)
+        kwarg_strings = ['{}={}'.format(k, v) for k, v in kwargs.items()]
+        option_string = ', '.join(list(args) + kwarg_strings)
+        if option_string:
+            return '[{}]'.format(option_string)
         else:
             return ''
 
@@ -44,7 +44,7 @@ class Environment(Formatter):
             self.header = Command('begin', [name])
             self.footer = Command('end', [name])
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         return '\n'.join(map(str, [self.header,
                                    Indent()(text),
                                    self.footer]))

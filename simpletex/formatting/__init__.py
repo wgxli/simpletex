@@ -9,12 +9,12 @@ class Style(Formatter):
 
     def apply(self, formatter):
         if not isinstance(formatter, Formatter):
-            errorString = '{} is not a Formatter.'
-            raise TypeError(errorString.format(formatter.__class__.__name__))
+            error_string = '{} is not a Formatter.'
+            raise TypeError(error_string.format(formatter.__class__.__name__))
         formatter._inline = self._inline
         self._formatters.append(formatter)
 
-    def format_text(self, text):
+    def format_text(self, text) -> str:
         for formatter in self._formatters:
             text = formatter(text)
         return text

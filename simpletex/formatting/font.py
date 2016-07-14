@@ -27,7 +27,7 @@ class SizeSelector(Formatter):
         self.skip = skip
         usepackage('anyfontsize')
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         if self.size is None or self.skip is None:
             return text
         return '{}{}'.format(Command('fontsize', [self.size, self.skip]),
@@ -35,7 +35,7 @@ class SizeSelector(Formatter):
 
 
 class FontSelector(Formatter):
-    def __init__(self, name):
+    def __init__(self, name: str):
         super().__init__()
         self.name = name
         add_registry('fontRegistry', FontRegistry())
@@ -43,7 +43,7 @@ class FontSelector(Formatter):
         usepackage('fontspec')
         usepackage('xltxtra')
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         font_tex_name = simpletex._CONTEXT.fontRegistry._font_name(self.name)
         return '{} {}'.format(Command(font_tex_name),
                               text)
@@ -56,7 +56,11 @@ class Font(Formatter):
     If used, the document must be processed with XeTeX
     or another font-aware TeX processor.
     """
-    def __init__(self, name, size=None, skip=None, inline=False):
+    def __init__(self,
+                 name: str,
+                 size: int = None,
+                 skip: int = None,
+                 inline: bool = False):
         """
         name : str
             The name of the font to use.
@@ -70,7 +74,7 @@ class Font(Formatter):
             self.skip = skip
         self._inline = inline
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         font_string = FontSelector(self.name)(text)
         size_string = SizeSelector(self.size, self.skip)(font_string)
         if self._inline:

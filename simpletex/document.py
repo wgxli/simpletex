@@ -26,16 +26,16 @@ class Document(Environment):
     Upon instantiation, loads the input encoding to UTF-8
     and declares the document class.
     """
-    def __init__(self, documentClass='article', size='12pt'):
+    def __init__(self, document_class: str = 'article', size: str = '12pt'):
         """
-        documentClass : str
+        document_class : str
             The LaTeX document class name to use.
         size : str
             The default font size to use.
         """
         super().__init__('document')
         simpletex._CONTEXT.classDeclaration = Command('documentclass',
-                                                      [documentClass],
+                                                      [document_class],
                                                       size)
         usepackage('inputenc', 'utf8')
 
@@ -43,12 +43,12 @@ class Document(Environment):
 class Title(Environment):
     heading = Style(inline=True)
 
-    def __init__(self, command_name, name):
+    def __init__(self, command_name: str, name: str):
         super().__init__()
         self._heading = Command(command_name, [name])
         add_registry('titleFormat', TitleFormatRegistry())
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         if self.heading:
             usepackage('titlesec')
             simpletex._CONTEXT.titleFormat.register(self.command_name,
@@ -57,7 +57,7 @@ class Title(Environment):
                                    Indent()(text)]))
 
     @property
-    def command_name(self):
+    def command_name(self) -> str:
         return self._heading.name
 
     @command_name.setter

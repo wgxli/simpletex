@@ -8,13 +8,17 @@ This module provides utilities to perform basic text formatting.
 """
 
 from simpletex.core import Formatter
-from simpletex.base import Command, Environment
+from simpletex.base import Command
 
 __all__ = ['Bold', 'Italics', 'Underline', 'SmallCaps', 'Emphasis']
 
+
 class SimpleFormatter(Formatter):
     """Applies formatting to text. Generic base class."""
-    def __init__(self, command_name, inline_name, inline=False):
+    def __init__(self,
+                 command_name: str,
+                 inline_name: str,
+                 inline: bool = False):
         """
         command_name : str
             The name of the LaTeX formatting command to use.
@@ -29,7 +33,7 @@ class SimpleFormatter(Formatter):
         self.inline_name = inline_name
         self._inline = inline
 
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         if self._inline:
             return '{}{}'.format(Command(self.inline_name),
                                  text)
@@ -39,29 +43,29 @@ class SimpleFormatter(Formatter):
 
 class Bold(SimpleFormatter):
     """Applies bold formatting to text."""
-    def __init__(self, inline=False):
+    def __init__(self, inline: bool = False):
         super().__init__('textbf', 'bfshape', inline)
 
 
 class Italics(SimpleFormatter):
     """Applies italic formatting to text."""
-    def __init__(self, inline=False):
+    def __init__(self, inline: bool = False):
         super().__init__('textit', 'itshape', inline)
 
 
 class Underline(SimpleFormatter):
     """Applies underline formatting to text."""
-    def __init__(self, inline=False):
+    def __init__(self, inline: bool = False):
         super().__init__('underline', 'underline', inline)
 
 
 class SmallCaps(SimpleFormatter):
     """Applies small capital formatting to text."""
-    def __init__(self, inline=False):
+    def __init__(self, inline: bool = False):
         super().__init__('textsc', 'scshape', inline)
 
 
 class Emphasis(SimpleFormatter):
     """Applies emphasis formatting to text."""
-    def __init__(self, inline=False):
+    def __init__(self, inline: bool = False):
         super().__init__('emph', 'em', inline)

@@ -1,4 +1,4 @@
-from simpletex import write, save, alias
+from simpletex import write, save
 from simpletex.document import Document, Section, Subsection
 from simpletex.formatting.text import Bold, Italics, Underline, Emphasis, SmallCaps
 from simpletex.sequences import OrderedList, UnorderedList

@@ -1,6 +1,6 @@
 import codecs
 
-from simpletex.core import Text, Paragraph, Registry
+from simpletex.core import Text, Paragraph
 from simpletex.registry.core import ImportRegistry, CommandDefinitionRegistry
 from simpletex.base import Command
 
@@ -48,8 +48,9 @@ class _GlobalContextManager(object):
             f.write(str(self.preamble))
 
     def clear(self):
-            super().__setattr__('preamble', _Preamble())
-            super().__setattr__('contextStack', [self.preamble])
+        """Clears all text and resets the context stack."""
+        super().__setattr__('preamble', _Preamble())
+        super().__setattr__('contextStack', [self.preamble])
 
     def add_registry(self, name, registry):
         if name not in self:

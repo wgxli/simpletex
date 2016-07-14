@@ -55,9 +55,13 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bold&#39;</span><span class="p">,</span> <span class="s1">&#39;Italics&#39;</span><span class="p">,</span> <span class="s1">&#39;Underline&#39;</span><span class="p">,</span> <span class="s1">&#39;SmallCaps&#39;</span><span class="p">,</span> <span class="s1">&#39;Emphasis&#39;</span><span class="p">]</span>
 
+
 <span class="k">class</span> <span class="nc">SimpleFormatter</span><span class="p">(</span><span class="n">Formatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies formatting to text. Generic base class.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command_name</span><span class="p">,</span> <span class="n">inline_name</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">command_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">inline_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        command_name : str</span>
 <span class="sd">            The name of the LaTeX formatting command to use.</span>
@@ -72,7 +76,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">inline_name</span> <span class="o">=</span> <span class="n">inline_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inline</span> <span class="o">=</span> <span class="n">inline</span>
 
-    <span class="k">def</span> <span class="nf">_format_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_format_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inline</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inline_name</span><span class="p">),</span>
                                  <span class="n">text</span><span class="p">)</span>
@@ -82,31 +86,31 @@
 
 <div class="viewcode-block" id="Bold"><a class="viewcode-back" href="../../../text_formatting.html#simpletex.formatting.text.Bold">[docs]</a><span class="k">class</span> <span class="nc">Bold</span><span class="p">(</span><span class="n">SimpleFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies bold formatting to text.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;textbf&#39;</span><span class="p">,</span> <span class="s1">&#39;bfshape&#39;</span><span class="p">,</span> <span class="n">inline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Italics"><a class="viewcode-back" href="../../../text_formatting.html#simpletex.formatting.text.Italics">[docs]</a><span class="k">class</span> <span class="nc">Italics</span><span class="p">(</span><span class="n">SimpleFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies italic formatting to text.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;textit&#39;</span><span class="p">,</span> <span class="s1">&#39;itshape&#39;</span><span class="p">,</span> <span class="n">inline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Underline"><a class="viewcode-back" href="../../../text_formatting.html#simpletex.formatting.text.Underline">[docs]</a><span class="k">class</span> <span class="nc">Underline</span><span class="p">(</span><span class="n">SimpleFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies underline formatting to text.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="s1">&#39;underline&#39;</span><span class="p">,</span> <span class="n">inline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SmallCaps"><a class="viewcode-back" href="../../../text_formatting.html#simpletex.formatting.text.SmallCaps">[docs]</a><span class="k">class</span> <span class="nc">SmallCaps</span><span class="p">(</span><span class="n">SimpleFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies small capital formatting to text.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;textsc&#39;</span><span class="p">,</span> <span class="s1">&#39;scshape&#39;</span><span class="p">,</span> <span class="n">inline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Emphasis"><a class="viewcode-back" href="../../../text_formatting.html#simpletex.formatting.text.Emphasis">[docs]</a><span class="k">class</span> <span class="nc">Emphasis</span><span class="p">(</span><span class="n">SimpleFormatter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies emphasis formatting to text.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;emph&#39;</span><span class="p">,</span> <span class="s1">&#39;em&#39;</span><span class="p">,</span> <span class="n">inline</span><span class="p">)</span></div>
 </pre></div>
 

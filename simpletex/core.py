@@ -7,23 +7,23 @@ class Formatter:
     def __init__(self):
         pass
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> str:
         if not args and not kwargs:
-            errorString = "Can't re-instantiate an instance of {}."
-            raise TypeError(errorString.format(self.__class__.__name__))
+            error_string = "Can't re-instantiate an instance of {}."
+            raise TypeError(error_string.format(self.__class__.__name__))
         else:
             return self._format_text(*args, **kwargs)
 
     # Should be overridden by subclasses
-    def _format_text(self, text):
+    def _format_text(self, text) -> str:
         return text
 
     def __enter__(self):
         simpletex._CONTEXT.push(Paragraph())
 
     def __exit__(self, *args):
-        formattedText = self(simpletex._CONTEXT.pop())
-        simpletex._CONTEXT.write(formattedText)
+        formatted_text = self(simpletex._CONTEXT.pop())
+        simpletex._CONTEXT.write(formatted_text)
 
 
 class Text:
@@ -55,8 +55,8 @@ class Text:
         return ''.join(map(str, self))
 
     def __enter__(self):
-        errorString = "Can't use {} as a context manager."
-        raise TypeError(errorString.format(self.__class__.name))
+        error_string = "Can't use {} as a context manager."
+        raise TypeError(error_string.format(self.__class__.name))
 
     def __exit__(self, *args):
         pass
@@ -77,8 +77,8 @@ class Paragraph:
         return '\n'.join(map(str, self))
 
     def __enter__(self):
-        errorString = "Can't use {} as a context manager."
-        raise TypeError(errorString.format(self.__class__.name))
+        error_string = "Can't use {} as a context manager."
+        raise TypeError(error_string.format(self.__class__.name))
 
     def __exit__(self, *args):
         pass
@@ -105,7 +105,7 @@ class Registry:
 
     # Should be overridden in subclasses
     @staticmethod
-    def _entry_line(entry, value):
+    def _entry_line(entry, value) -> str:
         """Formats a single registration entry as text."""
         return entry
 
