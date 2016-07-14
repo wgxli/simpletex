@@ -23,7 +23,7 @@ class Document(Environment):
     This class does NOT manage the preamble
     (imports, newcommand declarations, etc.).
     The preamble is managed by the `simpletex.Preamble` class.
-    Upon instantiation, loads the input encoding to UTF-8
+    Upon instantiation, sets the input encoding to UTF-8
     and declares the document class.
     """
     def __init__(self, document_class: str = 'article', size: str = '12pt'):
