@@ -117,9 +117,10 @@ class TestParagraph(unittest.TestCase):
         self.assertRaises(TypeError, self.par.__enter__)
         self.assertEqual(self.par.__exit__(), None)
 
+
 class TestRegistry(unittest.TestCase):
-    COMPLEX_OBJECT = {'A': ['B', ('C', 'D')], 'E':None, False:'F'}
-    
+    COMPLEX_OBJECT = {'A': ['B', ('C', 'D')], 'E': None, False: 'F'}
+
     def setUp(self):
         self.reg = Registry()
 
@@ -155,7 +156,7 @@ class TestRegistry(unittest.TestCase):
     def test_items_nonempty(self):
         self.register_entries()
         self.assertEqual(list(self.reg.items()), [('A', None),
-                                                 ('B', self.COMPLEX_OBJECT)])
+                                                  ('B', self.COMPLEX_OBJECT)])
 
     def test_str_empty(self):
         self.assertEqual(str(self.reg), '')

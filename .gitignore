@@ -1,7 +1,7 @@
 dist
 simpletex.egg-info
 docs/build
-*/__pycache__
+__pycache__/
 .coverage
 cover
 run_tests.bat
