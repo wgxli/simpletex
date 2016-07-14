@@ -29,7 +29,7 @@ class SimpleFormatter(Formatter):
         self.inline_name = inline_name
         self._inline = inline
 
-    def _format_text(self, text: str) -> str:
+    def _format_text(self, text):
         if self._inline:
             return '{}{}'.format(Command(self.inline_name),
                                  text)

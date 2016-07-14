@@ -48,7 +48,7 @@ class Title(Environment):
         self._heading = Command(command_name, [name])
         add_registry('titleFormat', TitleFormatRegistry())
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         if self.heading:
             usepackage('titlesec')
             simpletex._CONTEXT.titleFormat.register(self.command_name,

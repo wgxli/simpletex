@@ -14,7 +14,7 @@ class Style(Formatter):
         formatter._inline = self._inline
         self._formatters.append(formatter)
 
-    def format_text(self, text: str) -> str:
+    def format_text(self, text):
         for formatter in self._formatters:
             text = formatter(text)
         return text

@@ -7,7 +7,7 @@ class Formatter:
     def __init__(self):
         pass
 
-    def __call__(self, *args, **kwargs) -> str:
+    def __call__(self, *args, **kwargs):
         if not args and not kwargs:
             errorString = "Can't re-instantiate an instance of {}."
             raise TypeError(errorString.format(self.__class__.__name__))
@@ -15,7 +15,7 @@ class Formatter:
             return self._format_text(*args, **kwargs)
 
     # Should be overridden by subclasses
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         return text
 
     def __enter__(self):

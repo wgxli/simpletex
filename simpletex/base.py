@@ -6,7 +6,7 @@ class Brace(Formatter):
     def __init__(self):
         super().__init__()
 
-    def __call__(self, *args) -> str:
+    def __call__(self, *args):
         return ''.join('{{{}}}'.format(arg) for arg in args)
 
 
@@ -14,7 +14,7 @@ class OptionFormatter(Formatter):
     def __init__(self):
         super().__init__()
 
-    def __call__(self, *args, **kwargs) -> str:
+    def __call__(self, *args, **kwargs):
         kwargStrings = ['{}={}'.format(k, v) for k, v in kwargs.items()]
         optionString = ', '.join(list(args) + kwargStrings)
         if optionString:
@@ -44,7 +44,7 @@ class Environment(Formatter):
             self.header = Command('begin', [name])
             self.footer = Command('end', [name])
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         return '\n'.join(map(str, [self.header,
                                    Indent()(text),
                                    self.footer]))

@@ -4,7 +4,7 @@ from simpletex.base import Environment
 
 class ItemList(Formatter):
     @staticmethod
-    def _format_text(text) -> str:
+    def _format_text(text):
         """Formats the given text into a LaTeX item list.
 
         text : iterable of pairs or iterable of items
@@ -23,7 +23,7 @@ class OrderedList(Environment):
     def __init__(self):
         super().__init__('enumerate')
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         return super().format_text(ItemList()(text))
 
 
@@ -33,7 +33,7 @@ class UnorderedList(Environment):
     def __init__(self):
         super().__init__('itemize')
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         if self.bullet is None:
             return super().format_text(ItemList()(text))
         else:
@@ -46,5 +46,5 @@ class Description(Environment):
     def __init__(self):
         super().__init__('description')
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         return super().format_text(ItemList()(text))

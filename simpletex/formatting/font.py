@@ -27,7 +27,7 @@ class SizeSelector(Formatter):
         self.skip = skip
         usepackage('anyfontsize')
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         if self.size is None or self.skip is None:
             return text
         return '{}{}'.format(Command('fontsize', [self.size, self.skip]),
@@ -43,7 +43,7 @@ class FontSelector(Formatter):
         usepackage('fontspec')
         usepackage('xltxtra')
 
-    def _format_text(self, text) -> str:
+    def _format_text(self, text):
         font_tex_name = simpletex._CONTEXT.fontRegistry._font_name(self.name)
         return '{} {}'.format(Command(font_tex_name),
                               text)
@@ -70,7 +70,7 @@ class Font(Formatter):
             self.skip = skip
         self._inline = inline
 
-    def _format_text(self, text: str) -> str:
+    def _format_text(self, text):
         font_string = FontSelector(self.name)(text)
         size_string = SizeSelector(self.size, self.skip)(font_string)
         if self._inline:

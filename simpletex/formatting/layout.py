@@ -22,7 +22,7 @@ class Centering(Environment):
         super().__init__('center')
         self._inline = inline
 
-    def _format_text(self, text: str) -> str:
+    def _format_text(self, text):
         if self._inline:
             return '{}{}'.format(Command('centering'), text)
         else:
