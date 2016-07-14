@@ -44,7 +44,7 @@ class Environment(Formatter):
             self.header = Command('begin', [name])
             self.footer = Command('end', [name])
 
-    def format_text(self, text) -> str:
+    def _format_text(self, text) -> str:
         return '\n'.join(map(str, [self.header,
                                    Indent()(text),
                                    self.footer]))

@@ -29,9 +29,9 @@ class Document(Environment):
     def __init__(self, documentClass='article', size='12pt'):
         """
         documentClass : str
-            LaTeX class name
+            The LaTeX document class name to use.
         size : str
-            default font size
+            The default font size to use.
         """
         super().__init__('document')
         simpletex._CONTEXT.classDeclaration = Command('documentclass',
@@ -48,7 +48,7 @@ class Title(Environment):
         self._heading = Command(command_name, [name])
         add_registry('titleFormat', TitleFormatRegistry())
 
-    def format_text(self, text) -> str:
+    def _format_text(self, text) -> str:
         if self.heading:
             usepackage('titlesec')
             simpletex._CONTEXT.titleFormat.register(self.command_name,
@@ -68,11 +68,16 @@ class Title(Environment):
 class Section(Title):
     """Represents a LaTeX section."""
     heading = Style(inline=True)
+    """
+    Section heading style.
+    If formatting is applied, a global section style
+    will be registered, and the 'titlesec' package will be imported.
+    """
 
     def __init__(self, name):
         """
         name : str
-            section name
+            The section name.
         """
         super().__init__('section', name)
 
@@ -80,10 +85,15 @@ class Section(Title):
 class Subsection(Title):
     """Represents a LaTeX subsection."""
     heading = Style(inline=True)
+    """
+    Subsection heading style.
+    If formatting is applied, a global subsection style
+    will be registered, and the 'titlesec' package will be imported.
+    """
 
     def __init__(self, name):
         """
         name : str
-            subsection name
+            The subsection name.
         """
         super().__init__('subsection', name)

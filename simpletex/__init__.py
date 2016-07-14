@@ -15,11 +15,11 @@ class _Preamble(Text):
 
     def write(self, text):
         # Move body last
-        self._order.remove('body')
-        self._order.append('body')
         self.body.write(text)
 
     def __str__(self):
+        self._order.remove('body')
+        self._order.append('body')
         # Prevent race conditions
         list(map(str, self))
         return '\n\n'.join(str(item) for item in self if str(item))
@@ -46,8 +46,10 @@ class _GlobalContextManager(object):
     def save(self, name):
         with codecs.open(name, "w", "utf-8") as f:
             f.write(str(self.preamble))
-            # Reset the stack
+
+    def clear(self):
             super().__setattr__('preamble', _Preamble())
+            super().__setattr__('contextStack', [self.preamble])
 
     def add_registry(self, name, registry):
         if name not in self:
@@ -112,3 +114,11 @@ def alias(name, definition):
 
 def save(filename):
     _CONTEXT.save(filename)
+
+
+def dump():
+    return str(_CONTEXT.preamble)
+
+
+def clear():
+    _CONTEXT.clear()

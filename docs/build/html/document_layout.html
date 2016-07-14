@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Core LaTeX &mdash; simpletex 0.1 documentation</title>
+    <title>Document Layout &mdash; simpletex 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="simpletex 0.1 documentation" href="index.html" />
-    <link rel="next" title="Document Structure" href="document_structure.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" />
+    <link rel="up" title="Core LaTeX" href="core_latex.html" />
+    <link rel="prev" title="Text Formatting" href="text_formatting.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -41,16 +41,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-latex">
-<h1>Core LaTeX<a class="headerlink" href="#core-latex" title="Permalink to this headline">¶</a></h1>
-<p>This section documents simpletex&#8217;s core LaTeX functionality.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="document_structure.html">Document Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="text_formatting.html">Text Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="document_layout.html">Document Layout</a></li>
-</ul>
-</div>
+  <span class="target" id="module-simpletex.formatting.layout"></span><div class="section" id="document-layout">
+<h1>Document Layout<a class="headerlink" href="#document-layout" title="Permalink to this headline">¶</a></h1>
+<p>This module provides utilities to control document and text layout.</p>
+<dl class="class">
+<dt id="simpletex.formatting.layout.Centering">
+<em class="property">class </em><code class="descclassname">simpletex.formatting.layout.</code><code class="descname">Centering</code><span class="sig-paren">(</span><em>inline=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/formatting/layout.html#Centering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.formatting.layout.Centering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.base.Environment</span></code></p>
+<p>Centers all contents.
+Equivalent to the LaTeX &#8216;center&#8217; environment.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="simpletex.formatting.layout.Columns">
+<em class="property">class </em><code class="descclassname">simpletex.formatting.layout.</code><code class="descname">Columns</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/formatting/layout.html#Columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.formatting.layout.Columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.base.Environment</span></code></p>
+<p>Formats contents into columns.
+Equivalent to the LaTeX &#8216;multicols&#8217; environment.</p>
+<dl class="docutils">
+<dt>number</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>The number of columns to use.</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -62,15 +75,16 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
-      <li>Next: <a href="document_structure.html" title="next chapter">Document Structure</a></li>
+  <li><a href="core_latex.html">Core LaTeX</a><ul>
+      <li>Previous: <a href="text_formatting.html" title="previous chapter">Text Formatting</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/core_latex.txt"
+      <li><a href="_sources/document_layout.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -96,7 +110,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="_sources/core_latex.txt"
+      <a href="_sources/document_layout.txt"
           rel="nofollow">Page source</a>
     </div>
 

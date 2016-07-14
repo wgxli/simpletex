@@ -12,10 +12,10 @@ class Formatter:
             errorString = "Can't re-instantiate an instance of {}."
             raise TypeError(errorString.format(self.__class__.__name__))
         else:
-            return self.format_text(*args, **kwargs)
+            return self._format_text(*args, **kwargs)
 
-    def format_text(self, text) -> str:
-        """Should be overridden by subclasses."""
+    # Should be overridden by subclasses
+    def _format_text(self, text) -> str:
         return text
 
     def __enter__(self):

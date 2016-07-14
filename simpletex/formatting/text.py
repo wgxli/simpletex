@@ -10,7 +10,7 @@ This module provides utilities to perform basic text formatting.
 from simpletex.core import Formatter
 from simpletex.base import Command, Environment
 
-__all__ = ['Bold', 'Italics', 'Underline', 'Emphasis']
+__all__ = ['Bold', 'Italics', 'Underline', 'SmallCaps', 'Emphasis']
 
 class SimpleFormatter(Formatter):
     """Applies formatting to text. Generic base class."""
@@ -29,7 +29,7 @@ class SimpleFormatter(Formatter):
         self.inline_name = inline_name
         self._inline = inline
 
-    def format_text(self, text: str) -> str:
+    def _format_text(self, text: str) -> str:
         if self._inline:
             return '{}{}'.format(Command(self.inline_name),
                                  text)

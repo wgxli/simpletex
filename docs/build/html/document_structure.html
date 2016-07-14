@@ -57,9 +57,9 @@ Upon instantiation, loads the input encoding to UTF-8
 and declares the document class.</p>
 <dl class="docutils">
 <dt>documentClass</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>LaTeX class name</dd>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The LaTeX document class name to use.</dd>
 <dt>size</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>default font size</dd>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The default font size to use.</dd>
 </dl>
 </dd></dl>
 
@@ -70,8 +70,16 @@ and declares the document class.</p>
 <p>Represents a LaTeX section.</p>
 <dl class="docutils">
 <dt>name</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>section name</dd>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The section name.</dd>
 </dl>
+<dl class="attribute">
+<dt id="simpletex.document.Section.heading">
+<code class="descname">heading</code><em class="property"> = Style[]</em><a class="headerlink" href="#simpletex.document.Section.heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Section heading style.
+If formatting is applied, a global section style
+will be registered, and the &#8216;titlesec&#8217; package will be imported.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -81,8 +89,16 @@ and declares the document class.</p>
 <p>Represents a LaTeX subsection.</p>
 <dl class="docutils">
 <dt>name</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>subsection name</dd>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The subsection name.</dd>
 </dl>
+<dl class="attribute">
+<dt id="simpletex.document.Subsection.heading">
+<code class="descname">heading</code><em class="property"> = Style[]</em><a class="headerlink" href="#simpletex.document.Subsection.heading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subsection heading style.
+If formatting is applied, a global subsection style
+will be registered, and the &#8216;titlesec&#8217; package will be imported.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

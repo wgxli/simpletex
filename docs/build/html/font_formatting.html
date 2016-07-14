@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Core LaTeX &mdash; simpletex 0.1 documentation</title>
+    <title>Font Formatting &mdash; simpletex 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,6 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="simpletex 0.1 documentation" href="index.html" />
-    <link rel="next" title="Document Structure" href="document_structure.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -41,16 +39,31 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-latex">
-<h1>Core LaTeX<a class="headerlink" href="#core-latex" title="Permalink to this headline">¶</a></h1>
-<p>This section documents simpletex&#8217;s core LaTeX functionality.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="document_structure.html">Document Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="text_formatting.html">Text Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="document_layout.html">Document Layout</a></li>
-</ul>
-</div>
+  <span class="target" id="module-simpletex.formatting.font"></span><div class="section" id="font-formatting">
+<h1>Font Formatting<a class="headerlink" href="#font-formatting" title="Permalink to this headline">¶</a></h1>
+<p>This module provides utilities to change the font and size of text.</p>
+<dl class="class">
+<dt id="simpletex.formatting.font.Font">
+<em class="property">class </em><code class="descclassname">simpletex.formatting.font.</code><code class="descname">Font</code><span class="sig-paren">(</span><em>name</em>, <em>size=None</em>, <em>skip=None</em>, <em>inline=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/formatting/font.html#Font"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.formatting.font.Font" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.core.Formatter</span></code></p>
+<p>Changes the font face (and optionally the size) of text.
+Imports packages &#8216;fontspec&#8217; and &#8216;xltxtra&#8217; on instantiation.
+If used, the document must be processed with XeTeX
+or another font-aware TeX processor.</p>
+<dl class="docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The name of the font to use.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="simpletex.formatting.font.SizeSelector">
+<em class="property">class </em><code class="descclassname">simpletex.formatting.font.</code><code class="descname">SizeSelector</code><span class="sig-paren">(</span><em>size</em>, <em>skip=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simpletex/formatting/font.html#SizeSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpletex.formatting.font.SizeSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">simpletex.core.Formatter</span></code></p>
+<p>Changes the size of text.
+Imports package &#8216;anyfontsize&#8217; on instantiation.</p>
+</dd></dl>
+
 </div>
 
 
@@ -62,15 +75,13 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
-      <li>Next: <a href="document_structure.html" title="next chapter">Document Structure</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/core_latex.txt"
+      <li><a href="_sources/font_formatting.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -96,7 +107,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="_sources/core_latex.txt"
+      <a href="_sources/font_formatting.txt"
           rel="nofollow">Page source</a>
     </div>
 

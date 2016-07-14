@@ -72,9 +72,9 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">documentClass</span><span class="o">=</span><span class="s1">&#39;article&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;12pt&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        documentClass : str</span>
-<span class="sd">            LaTeX class name</span>
+<span class="sd">            The LaTeX document class name to use.</span>
 <span class="sd">        size : str</span>
-<span class="sd">            default font size</span>
+<span class="sd">            The default font size to use.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;document&#39;</span><span class="p">)</span>
         <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">classDeclaration</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="s1">&#39;documentclass&#39;</span><span class="p">,</span>
@@ -91,7 +91,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_heading</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="n">command_name</span><span class="p">,</span> <span class="p">[</span><span class="n">name</span><span class="p">])</span>
         <span class="n">add_registry</span><span class="p">(</span><span class="s1">&#39;titleFormat&#39;</span><span class="p">,</span> <span class="n">TitleFormatRegistry</span><span class="p">())</span>
 
-    <span class="k">def</span> <span class="nf">format_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_format_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">:</span>
             <span class="n">usepackage</span><span class="p">(</span><span class="s1">&#39;titlesec&#39;</span><span class="p">)</span>
             <span class="n">simpletex</span><span class="o">.</span><span class="n">_CONTEXT</span><span class="o">.</span><span class="n">titleFormat</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">command_name</span><span class="p">,</span>
@@ -111,11 +111,16 @@
 <div class="viewcode-block" id="Section"><a class="viewcode-back" href="../../document_structure.html#simpletex.document.Section">[docs]</a><span class="k">class</span> <span class="nc">Section</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Represents a LaTeX section.&quot;&quot;&quot;</span>
     <span class="n">heading</span> <span class="o">=</span> <span class="n">Style</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Section heading style.</span>
+<span class="sd">    If formatting is applied, a global section style</span>
+<span class="sd">    will be registered, and the &#39;titlesec&#39; package will be imported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        name : str</span>
-<span class="sd">            section name</span>
+<span class="sd">            The section name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;section&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
@@ -123,11 +128,16 @@
 <div class="viewcode-block" id="Subsection"><a class="viewcode-back" href="../../document_structure.html#simpletex.document.Subsection">[docs]</a><span class="k">class</span> <span class="nc">Subsection</span><span class="p">(</span><span class="n">Title</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Represents a LaTeX subsection.&quot;&quot;&quot;</span>
     <span class="n">heading</span> <span class="o">=</span> <span class="n">Style</span><span class="p">(</span><span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Subsection heading style.</span>
+<span class="sd">    If formatting is applied, a global subsection style</span>
+<span class="sd">    will be registered, and the &#39;titlesec&#39; package will be imported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        name : str</span>
-<span class="sd">            subsection name</span>
+<span class="sd">            The subsection name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s1">&#39;subsection&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 </pre></div>

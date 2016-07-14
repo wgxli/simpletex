@@ -7,4 +7,4 @@ This section documents simpletex's core LaTeX functionality.
 
     document_structure
     text_formatting
-    layout
+    document_layout

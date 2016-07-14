@@ -43,7 +43,29 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial covers the basic usage, advanced features, and third-party support of simpletex. For further usage examples, please see the <a class="reference internal" href="examples.html"><span class="doc">Examples</span></a>.</p>
+<p>This tutorial covers the fundamentals, basic usage, advanced features, and third-party support of simpletex.
+For further usage examples, please see the <a class="reference internal" href="examples.html"><span class="doc">Examples</span></a>.</p>
+<div class="section" id="fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<p>The core of simpletex is the <code class="docutils literal"><span class="pre">Formatter</span></code> class; nearly all simpletex classes derive from this base class.
+Formatters apply formatting to (mostly) text. For example, the <code class="docutils literal"><span class="pre">Italics</span></code> formatter italicizes text.
+Formatters can be used by calling a <code class="docutils literal"><span class="pre">Formatter</span></code> instance.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">simpletex.formatting.text</span> <span class="kn">import</span> <span class="n">Italics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">Italics</span><span class="p">()(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">))</span>
+<span class="go">\textit{Hello World!}</span>
+</pre></div>
+</div>
+<p>Formatter instances can also be used as context managers.
+Upon exit of the <code class="docutils literal"><span class="pre">with</span></code> block, all written text is passed to the formatter.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">simpletex</span> <span class="kn">import</span> <span class="n">write</span><span class="p">,</span> <span class="n">dump</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Italics</span><span class="p">():</span>
+<span class="go">                write(&#39;Hello&#39;)</span>
+<span class="go">                write(&#39;World&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dump</span><span class="p">()</span>
+<span class="go">&#39;\\textit{Hello\nWorld}&#39;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="creating-our-first-document">
@@ -91,6 +113,8 @@
 </pre></div>
 </div>
 <p>Pretty good for two additional lines.</p>
+<p>In the previous example, <code class="docutils literal"><span class="pre">Section.heading</span></code> is a <code class="docutils literal"><span class="pre">Style</span></code>:
+a <code class="docutils literal"><span class="pre">Formatter</span></code> which allows many other Formatters to be conveniently comibined.</p>
 </div>
 </div>
 </div>
@@ -104,6 +128,7 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#fundamentals">Fundamentals</a></li>
 <li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
 <li><a class="reference internal" href="#creating-our-first-document">Creating Our First Document</a></li>
 <li><a class="reference internal" href="#sections-and-formatting">Sections and Formatting</a></li>

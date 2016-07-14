@@ -31,5 +31,5 @@ API Documentation
     :maxdepth: 1
 
     core_latex
-	xetex
-	third_party
+    xetex
+    third_party
