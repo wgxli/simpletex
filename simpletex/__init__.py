@@ -84,8 +84,8 @@ _LATEX_ESCAPE_DICT = {
 }
 
 
-def _latex_escape(text):
-    return ''.join(_LATEX_ESCAPE_DICT.get(char, char) for char in text)
+def _latex_escape(text) -> str:
+    return ''.join(str(_LATEX_ESCAPE_DICT.get(char, char)) for char in str(text))
 
 
 def write(text):
@@ -117,7 +117,7 @@ def save(filename):
     _CONTEXT.save(filename)
 
 
-def dump():
+def dump() -> str:
     return str(_CONTEXT.preamble)
 
 
