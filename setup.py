@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='simpletex',
-      version='0.1.3',
+      version='0.1.4',
       description='Easy Latex Document Generation',
       author='Samuel Li',
       author_email='samuel.wgx@gmail.com',
