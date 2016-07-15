@@ -8,7 +8,7 @@ This module provides formatters to create sequences and lists.
 from simpletex.core import Formatter
 from simpletex.base import Environment
 
-__all__ = ('OrderedList', 'UnorderedList')
+__all__ = ('OrderedList', 'UnorderedList', 'Description')
 
 
 class ItemList(Formatter):

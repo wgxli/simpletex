@@ -2,11 +2,110 @@ import unittest
 import numpy as np
 
 from simpletex import write, clear, dump
-from simpletex.math import Divide, Matrix
+from simpletex.math import (Equation,
+                            Add, Subtract, Multiply, Divide,
+                            Matrix)
 
 DATA = [[1, 2], [3, 4]]
 NP_DATA = np.array(DATA)
 MAT_ENV = '\\begin{{Bmatrix}}\n{}\n\\end{{Bmatrix}}'
+
+
+class TestEquation(unittest.TestCase):
+    def setUp(self):
+        clear()
+
+    def test_inline_empty(self):
+        self.assertEqual(str(Equation()('')), '$$')
+
+    def test_display_empty(self):
+        self.assertEqual(str(Equation(inline=False)('')),
+                         '$$$$')
+
+    def test_inline(self):
+        with Equation():
+            write('x')
+            write(5)
+            write(17)
+        self.assertEqual(dump(), '$x = 5 = 17$')
+
+    def test_display(self):
+        with Equation(inline=False):
+            write('x')
+            write(5)
+            write(17)
+        self.assertEqual(dump(), '$$x = 5 = 17$$')
+
+
+class TestAdd(unittest.TestCase):
+    def setUp(self):
+        self.add = Add()
+        clear()
+
+    def test_call_empty(self):
+        self.assertEqual(str(self.add('')), '')
+
+    def test_write_empty(self):
+        with self.add:
+            pass
+        self.assertEqual(dump(), '')
+
+    def test_call(self):
+        self.assertEqual(str(self.add(3, 5, 7)), '3+5+7')
+
+    def test_write(self):
+        with self.add:
+            write(3)
+            write(5)
+            write(7)
+        self.assertEqual(dump(), '3+5+7')
+
+
+class TestSubtract(unittest.TestCase):
+    def setUp(self):
+        self.sub = Subtract()
+        clear()
+
+    def test_call_empty(self):
+        self.assertEqual(str(self.sub('')), '')
+
+    def test_write_empty(self):
+        with self.sub:
+            pass
+        self.assertEqual(dump(), '')
+
+    def test_call(self):
+        self.assertEqual(str(self.sub(3, 5)), '3-5')
+
+    def test_write(self):
+        with self.sub:
+            write(3)
+            write(5)
+        self.assertEqual(dump(), '3-5')
+
+
+class TestMultiply(unittest.TestCase):
+    def setUp(self):
+        self.mul = Multiply(symbol='*')
+        clear()
+
+    def test_call_empty(self):
+        self.assertEqual(str(self.mul('')), '')
+
+    def test_write_empty(self):
+        with self.mul:
+            pass
+        self.assertEqual(dump(), '')
+
+    def test_call(self):
+        self.assertEqual(str(self.mul(3, 5, 7)), '3*5*7')
+
+    def test_write(self):
+        with self.mul:
+            write(3)
+            write(5)
+            write(7)
+        self.assertEqual(dump(), '3*5*7')
 
 
 class TestDivide(unittest.TestCase):
@@ -41,6 +140,7 @@ class TestDivide(unittest.TestCase):
 
     def test_error_long(self):
         self.assertRaises(ValueError, Divide(), [3, 1, 4])
+
 
 class TestMatrix(unittest.TestCase):
     def setUp(self):

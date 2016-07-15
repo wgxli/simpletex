@@ -5,7 +5,7 @@ This module provides formatters to create and display LaTeX equations.
     :license: GNU GPLv3, see License for more details.
 """
 
-from simpletex.core import Formatter
+from simpletex.core import Formatter, Paragraph
 from simpletex.base import Command, Environment
 
 __all__ = ('Equation',
@@ -49,15 +49,18 @@ class Operator(Formatter):
         super().__init__()
         self._operator = str(operator)
 
-    def _format_text(self, text) -> str:
+    def __call__(self, *args) -> str:
         """
         Format the given text using the generic operation.
 
-        text : iterable of str
-            The elements in the given text will be conveted to strings
-            and then joined by the operator symbol.
+        args : Paragraph or iterable
+            The elements in the given iterable or paragraph will be converted
+            to strings and then joined by the operator symbol.
         """
-        return self._operator.join(map(str, text))
+        if len(args) == 1 and isinstance(args[0], Paragraph):
+            return self._operator.join(map(str, args[0]))
+        else:
+            return self._operator.join(map(str, args))
 
 
 class Add(Operator):
@@ -137,8 +140,8 @@ class Divide(Operator):
         if denominator is None:
             try:
                 if len(numerator) != 2:
-                    error_string = '{} must have exactly two arguments.'
-                    raise ValueError(error_string.format(self.__class__.__name__))
+                    error_str = '{} must have exactly two arguments.'
+                    raise ValueError(error_str.format(self.__class__.__name__))
             except TypeError:
                 error_string = 'Numerator invalid, denominator not provided.'
                 raise ValueError(error_string.format(self.__class__.__name__))
@@ -170,8 +173,9 @@ class Matrix(Environment):
         Create a new empty matrix.
 
         brackets : str
-            Type of brackets to use. Supported options are '' (no brackets),
-            '(', '[', '{', '|', and '||'.
+            Type of brackets to use.
+            Supported options are ``''`` (no brackets), ``'('``, ``'['``,
+            ``'{'``, ``'|'``, and ``'||'``.
         """
         environment_name = '{}matrix'.format(self._BRACKET_DICT[brackets])
         super().__init__(environment_name)
