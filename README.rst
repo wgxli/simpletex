@@ -8,7 +8,7 @@
 	
 .. image:: https://travis-ci.org/swe100/simpletex.svg?branch=master
     :target: https://travis-ci.org/swe100/simpletex
-	:alt: Build Status
+    :alt: Build Status
 
 simpletex: Simple LaTeX Documents
 =================================
