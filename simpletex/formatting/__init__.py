@@ -51,7 +51,7 @@ class Style(Formatter):
         formatter._inline = self._inline
         self._formatters.append(formatter)
 
-    def format_text(self, text) -> str:
+    def _format_text(self, text) -> str:
         """
         Apply formatting to the given text.
 

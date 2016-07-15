@@ -34,7 +34,7 @@ class Centering(Environment):
         if self._inline:
             return '{}{}'.format(Command('centering'), text)
         else:
-            return super().format_text(text)
+            return super()._format_text(text)
 
 
 class Columns(Environment):

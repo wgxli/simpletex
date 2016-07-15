@@ -11,8 +11,8 @@ from simpletex.core import Text, Paragraph
 from simpletex.registry.core import ImportRegistry, CommandDefinitionRegistry
 from simpletex.base import Command
 
-__all__ = ('write', 'write_break', 'add_registry', 'usepackage',
-           'alias', 'save', 'dump', 'clear')
+__all__ = ('latex_escape', 'write', 'write_break', 'add_registry',
+           'usepackage', 'alias', 'save', 'dump', 'clear')
 
 
 class _Preamble(Text):
@@ -94,36 +94,32 @@ _LATEX_ESCAPE_DICT = {
     '^': Command('^'),
     '{': r'\{',
     '}': r'\}',
-    '\\': Command('textasciitilde'),
+    '\\': Command('textbackslash'),
     '\n': r'\\',
     '-': r'{-}'
 }
 
 
-def _latex_escape(text) -> str:
+def latex_escape(text) -> str:
+    """Escape any special LaTeX characters."""
     return ''.join(str(_LATEX_ESCAPE_DICT.get(char, char))
                    for char in str(text))
 
 
 def write(text):
-    """
-    Escape the given string and write it to the current context.
-
-    The given text is LaTeX escaped and then
-    written to the current top-level context.
-    """
-    _CONTEXT.write(_latex_escape(str(text)))
+    """Write the given string to the current top-level context."""
+    _CONTEXT.write(str(text))
 
 
 def write_break(text):
     r"""
-    Escape the given string and write it, adding trailing line break.
+    Write the given string, adding a LaTeX line break.
 
-    The given text is LaTeX escaped, and a trailing
+    The given text converted to a string, and a trailing
     LaTeX line break (``\\``) is appended.
     It is then written to the current top-level context.
     """
-    _CONTEXT.write(_latex_escape(str(text)) + r' \\')
+    _CONTEXT.write(str(text) + r' \\')
 
 
 def add_registry(name: str, registry):
