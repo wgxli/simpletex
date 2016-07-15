@@ -48,15 +48,9 @@ Python Code
     from simpletex.formatting.text import (Bold, Italics, Underline,
                                            Emphasis, SmallCaps)
     from simpletex.sequences import OrderedList, UnorderedList
-<<<<<<< HEAD
 
     UnorderedList.bullet = '>'
 
-=======
-    
-    UnorderedList.bullet = '>'
-    
->>>>>>> feature-math
     with Document(size='11pt'):
         with Section('Section Name'):
             with UnorderedList():
@@ -70,14 +64,8 @@ Python Code
                 with OrderedList():
                     write(Emphasis()('Emphasized Text'))
                     write(SmallCaps()('Small Caps'))
-<<<<<<< HEAD
 
     save('filename.tex')
-
-=======
-    
-    save('filename.tex')
->>>>>>> feature-math
 
 
 TeX Output
