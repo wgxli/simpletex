@@ -79,9 +79,13 @@ class Multiply(Operator):
     """Multiplies arguments together in symbolic form."""
 
     _SYMBOL_DICT = {None: '',
+                    '.': Command('cdot '),
                     'dot': Command('cdot '),
+                    'x': Command('times '),
                     'cross': Command('times '),
-                    'times': Command('times ')}
+                    'times': Command('times '),
+                    '*': '*',
+                    'star': '*'}
     """
     An internal dictionary storing the symbols' names
     and their corresponding TeX commands.
@@ -94,8 +98,9 @@ class Multiply(Operator):
         symbol : str or None
             Chooses the multiplication symbol to use.
             If ``None``, no explicit symbol is used.
-            If 'dot', a dot-style (``\cdot``) operator is used.
-            If 'cross' or 'times', a cross-style (``\times``) operator is used.
+            If '.' or 'dot', a dot-style (``\cdot``) operator is used.
+            If 'x', 'cross', or 'times', a cross-style (``\times``) operator is used.
+            If '*' or 'star', a star-style (``*``) operator is used.
         """
         super().__init__(self._SYMBOL_DICT[symbol])
 
