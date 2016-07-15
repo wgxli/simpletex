@@ -1,7 +1,5 @@
 """
-Document Layout
-===============
-This module provides utilities to control document and text layout.
+This module provides formatters to control document and text layout.
 
 ..  :copyright: (c) 2016 by Samuel Li.
     :license: GNU GPLv3, see License for more details.
@@ -10,15 +8,25 @@ This module provides utilities to control document and text layout.
 from simpletex import usepackage
 from simpletex.base import Command, Environment
 
-__all__ = ['Centering', 'Columns']
+__all__ = ('Centering', 'Columns')
 
 
 class Centering(Environment):
     """
     Centers all contents.
+
     Equivalent to the LaTeX 'center' environment.
     """
+
     def __init__(self, inline: bool = False):
+        r"""
+        Create a new centering formatter.
+
+        inline : bool
+            If true, the inline (``\centering``) version
+            of the formatter is used.
+            Otherwise, use the default (``\begin{center}``) version.
+        """
         super().__init__('center')
         self._inline = inline
 
@@ -32,10 +40,16 @@ class Centering(Environment):
 class Columns(Environment):
     """
     Formats contents into columns.
-    Equivalent to the LaTeX 'multicols' environment.
+
+    Equivalent to the LaTeX ``multicols`` environment.
     """
+
     def __init__(self, number: int):
         """
+        Create a new ``multicols`` environment.
+
+        Automatically imports the required ``multicol`` package.
+
         number : int
             The number of columns to use.
         """

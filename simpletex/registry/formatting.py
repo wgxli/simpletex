@@ -1,5 +1,14 @@
+"""
+This module provides formatting registries to use in the document preamble.
+
+..  :copyright: (c) 2016 by Samuel Li.
+    :license: GNU GPLv3, see License for more details.
+"""
+
 from simpletex.core import Registry
 from simpletex.base import Command
+
+__all__ = ()
 
 
 class FontRegistry(Registry):

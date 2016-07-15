@@ -1,6 +1,4 @@
 """
-Document Structure
-==================
 This module provides utilities to define a document's basic structure.
 
 ..  :copyright: (c) 2016 by Samuel Li.
@@ -14,20 +12,23 @@ from simpletex.formatting import Style
 from simpletex.formatting.core import Indent
 from simpletex.registry.formatting import TitleFormatRegistry
 
-__all__ = ['Document', 'Section', 'Subsection']
+__all__ = ('Document', 'Section', 'Subsection')
 
 
 class Document(Environment):
     """A class which manages a LaTeX document.
 
+    Upon instantiation, sets the input encoding to UTF-8
+    and declares the document class.
     This class does NOT manage the preamble
     (imports, newcommand declarations, etc.).
     The preamble is managed by the `simpletex.Preamble` class.
-    Upon instantiation, sets the input encoding to UTF-8
-    and declares the document class.
     """
+
     def __init__(self, document_class: str = 'article', size: str = '12pt'):
         """
+        Create an empty document using the given document class and font size.
+
         document_class : str
             The LaTeX document class name to use.
         size : str
@@ -67,6 +68,7 @@ class Title(Environment):
 
 class Section(Title):
     """Represents a LaTeX section."""
+
     heading = Style(inline=True)
     """
     Section heading style.
@@ -74,8 +76,10 @@ class Section(Title):
     will be registered, and the 'titlesec' package will be imported.
     """
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         """
+        Create an empty section with the given name.
+
         name : str
             The section name.
         """
@@ -84,6 +88,7 @@ class Section(Title):
 
 class Subsection(Title):
     """Represents a LaTeX subsection."""
+
     heading = Style(inline=True)
     """
     Subsection heading style.
@@ -91,8 +96,10 @@ class Subsection(Title):
     will be registered, and the 'titlesec' package will be imported.
     """
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         """
+        Create an empty subsection with the given name.
+
         name : str
             The subsection name.
         """
