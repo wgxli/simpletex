@@ -70,9 +70,9 @@ class Font(Formatter):
     """
     Changes the font face (and optionally the size) of text.
 
-    Imports packages 'fontspec' and 'xltxtra' on instantiation.
-    If used, the document must be processed with XeTeX
-    or another font-aware TeX processor.
+    Imports the required packages ``fontspec`` and ``xltxtra``
+    upon instantiation. If used, the document must be processed
+    with XeTeX or another font-aware TeX processor.
     """
 
     def __init__(self,

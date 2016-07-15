@@ -1,3 +1,7 @@
+.. image:: https://img.shields.io/pypi/v/simpletex.svg
+    :target: https://pypi.python.org/pypi/simpletex
+    :alt: PyPI
+
 .. image:: https://readthedocs.org/projects/simpletex/badge/?version=latest
     :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
