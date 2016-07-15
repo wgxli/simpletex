@@ -1,6 +1,10 @@
 .. image:: https://readthedocs.org/projects/simpletex/badge/?version=latest
     :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
+	
+.. image:: https://travis-ci.org/swe100/simpletex.svg?branch=master
+    :target: https://travis-ci.org/swe100/simpletex
+	:alt: Build Status
 
 simpletex: Simple LaTeX Documents
 =================================
