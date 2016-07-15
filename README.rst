@@ -1,10 +1,14 @@
+.. image:: https://img.shields.io/pypi/v/simpletex.svg
+    :target: https://pypi.python.org/pypi/simpletex
+    :alt: PyPI
+
 .. image:: https://readthedocs.org/projects/simpletex/badge/?version=latest
     :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 	
 .. image:: https://travis-ci.org/swe100/simpletex.svg?branch=master
     :target: https://travis-ci.org/swe100/simpletex
-	:alt: Build Status
+    :alt: Build Status
 
 simpletex: Simple LaTeX Documents
 =================================
