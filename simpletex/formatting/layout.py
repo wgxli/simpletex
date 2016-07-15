@@ -15,7 +15,7 @@ class Centering(Environment):
     """
     Centers all contents.
 
-    Equivalent to the LaTeX 'center' environment.
+    Equivalent to the LaTeX ``center`` environment.
     """
 
     def __init__(self, inline: bool = False):
