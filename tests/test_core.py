@@ -1,7 +1,7 @@
 import unittest
 import string
 
-from simpletex import write, clear, dump, _latex_escape
+from simpletex import write, clear, dump
 from simpletex.core import Formatter, Text, Paragraph, Registry
 
 SAMPLE_TEXT = string.printable
@@ -20,10 +20,9 @@ class TestFormatter(unittest.TestCase):
         self.assertRaises(TypeError, self.formatter)
 
     def test_context_manager(self):
-        escaped_text = _latex_escape(SAMPLE_TEXT)
         with self.formatter:
             write(SAMPLE_TEXT)
-        self.assertEqual(dump(), escaped_text)
+        self.assertEqual(dump(), SAMPLE_TEXT)
 
 
 class TestText(unittest.TestCase):
