@@ -44,7 +44,7 @@ class OrderedList(Environment):
 
     def _format_text(self, text) -> str:
         r"""Format a single item in the list into an ``\item`` entry."""
-        return super().format_text(ItemList()(text))
+        return super()._format_text(ItemList()(text))
 
 
 class UnorderedList(Environment):
@@ -68,10 +68,10 @@ class UnorderedList(Environment):
     def _format_text(self, text) -> str:
         r"""Format a single item in the list into an ``\item`` entry."""
         if self.bullet is None:
-            return super().format_text(ItemList()(text))
+            return super()._format_text(ItemList()(text))
         else:
             list_item_pairs = [(self.bullet, item) for item in text]
-            return super().format_text(ItemList()(list_item_pairs))
+            return super()._format_text(ItemList()(list_item_pairs))
 
 
 class Description(Environment):
@@ -87,4 +87,4 @@ class Description(Environment):
 
     def _format_text(self, text) -> str:
         """Format a single key-value pair in the list as LaTeX."""
-        return super().format_text(ItemList()(text))
+        return super()._format_text(ItemList()(text))

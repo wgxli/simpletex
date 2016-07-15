@@ -9,3 +9,4 @@ This section documents simpletex's core LaTeX functionality.
     text_formatting
     sequences
     document_layout
+    equations
