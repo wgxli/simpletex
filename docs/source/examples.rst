@@ -115,12 +115,10 @@ Python Code
         with Section('Inline Equations'):
             write('Example of the commutative property:')
             with Equation():
-                with Multiply(symbol='times'):
+                with Multiply(symbol='x'):
                     write(3)
                     write(5)
-                with Multiply(symbol='times'):
-                    write(5)
-                    write(3)
+                write(Multiply(symbol='times')(5, 3))
                 write(15)
         with Section('Display Equations'):
             write('If')
@@ -130,13 +128,9 @@ Python Code
             write('then:')
             with Equation(inline=False):
                 with Divide():
-                    with Add():
-                        write('x')
-                        write(1)
+                    write(Add()('x', 1))
                     write(3)
-                with Subtract():
-                    write(7)
-                    write(5)
+                write(Subtract()(7, 5))
     save('filename.tex')
 
 
