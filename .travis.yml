@@ -1,9 +1,12 @@
 language: python
 python:
-  - '3.2'
   - '3.3'
   - '3.4'
   - '3.5'
   - '3.6-dev'
   - 'nightly'
-script: nosetests
+install:
+  - pip install coveralls
+script: nosetests --with-coverage --cover-branch --cover-package=simpletex
+after_success:
+  - coveralls

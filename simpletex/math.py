@@ -5,6 +5,7 @@ This module provides formatters to create and display LaTeX equations.
     :license: GNU GPLv3, see License for more details.
 """
 
+from simpletex import usepackage
 from simpletex.core import Formatter, Paragraph
 from simpletex.base import Command, Environment
 
@@ -172,6 +173,9 @@ class Matrix(Environment):
         """
         Create a new empty matrix.
 
+        The type of brackets to use can be specified.
+        Automatically imports the required package ``amsmath``.
+
         brackets : str
             Type of brackets to use.
             Supported options are ``''`` (no brackets), ``'('``, ``'['``,
@@ -179,6 +183,7 @@ class Matrix(Environment):
         """
         environment_name = '{}matrix'.format(self._BRACKET_DICT[brackets])
         super().__init__(environment_name)
+        usepackage('amsmath')
 
     @staticmethod
     def _matrix_line(elements) -> str:
