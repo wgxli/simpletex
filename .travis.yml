@@ -6,4 +6,6 @@ python:
   - '3.5'
   - '3.6-dev'
   - 'nightly'
-script: nosetests
+script: nosetests --with-coverage --cover-branch --cover-package=simpletex
+after_success:
+  - coveralls
