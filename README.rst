@@ -10,6 +10,10 @@
     :target: https://travis-ci.org/swe100/simpletex
     :alt: Build Status
 
+.. image:: https://coveralls.io/repos/github/swe100/simpletex/badge.svg?branch=master
+   :target: https://coveralls.io/github/swe100/simpletex?branch=master
+   :alt: Coverage Status
+	
 simpletex: Simple LaTeX Documents
 =================================
 
