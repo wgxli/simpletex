@@ -30,7 +30,7 @@ class OptionFormatter(Formatter):
 class Command(Text):
     """Represents a single LaTeX command."""
 
-    def __init__(self, name: str, arguments=[], *args, **kwargs):
+    def __init__(self, name: str, arguments=(), *args, **kwargs):
         """
         Create a command with the given name, arguments, and options.
 
@@ -49,8 +49,8 @@ class Command(Text):
         """
         super().__init__()
         self.name = name
-        self.arguments = arguments
-        self.options = [args, kwargs]
+        self.arguments = list(arguments)
+        self.options = (args, kwargs)
 
     def __str__(self):
         """Format the command as LaTeX."""
