@@ -68,6 +68,14 @@ class Environment(Formatter):
             self.footer = Command('end', [name])
 
     def _format_text(self, text) -> str:
+        try:
+            # Test for header and footer presence
+            self.header
+            self.footer
+        except AttributeError as e:
+            error_string = 'No name specified for {}.'
+            class_name = self.__class__.__name__
+            raise ValueError(error_string.format(class_name)) from e
         return '\n'.join(map(str, [self.header,
                                    Indent()(text),
                                    self.footer]))
