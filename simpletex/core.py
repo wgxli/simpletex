@@ -29,7 +29,8 @@ class Formatter:
             return self._format_text(*args, **kwargs)
 
     # Should be overridden by subclasses
-    def _format_text(self, text) -> str:
+    @staticmethod
+    def _format_text(text) -> str:
         return text
 
     def __enter__(self):
