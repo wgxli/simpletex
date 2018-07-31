@@ -9,8 +9,8 @@
 .. image:: https://travis-ci.org/wgxli/simpletex.svg?branch=master
     :target: https://travis-ci.org/wgxli/simpletex
     :alt: Build Status
-
-.. image:: https://coveralls.io/repos/github/wgxlisimpletex/badge.svg?branch=master
+    
+.. image:: https://coveralls.io/repos/github/wgxli/simpletex/badge.svg?branch=master
    :target: https://coveralls.io/github/wgxli/simpletex?branch=master
    :alt: Coverage Status
 	
