@@ -6,12 +6,12 @@
     :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 	
-.. image:: https://travis-ci.org/swe100/simpletex.svg?branch=master
-    :target: https://travis-ci.org/swe100/simpletex
+.. image:: https://travis-ci.org/wgxli/simpletex.svg?branch=master
+    :target: https://travis-ci.org/wgxli/simpletex
     :alt: Build Status
 
-.. image:: https://coveralls.io/repos/github/swe100/simpletex/badge.svg?branch=master
-   :target: https://coveralls.io/github/swe100/simpletex?branch=master
+.. image:: https://coveralls.io/repos/github/wgxlisimpletex/badge.svg?branch=master
+   :target: https://coveralls.io/github/wgxli/simpletex?branch=master
    :alt: Coverage Status
 	
 simpletex: Simple LaTeX Documents
