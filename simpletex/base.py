@@ -61,10 +61,10 @@ class Command(Text):
 
 
 class Environment(Formatter):
-    def __init__(self, name=None):
+    def __init__(self, name=None, *args):
         super().__init__()
         if name is not None:
-            self.header = Command('begin', [name])
+            self.header = Command('begin', [name, *args])
             self.footer = Command('end', [name])
 
     def _format_text(self, text) -> str:
