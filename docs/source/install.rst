@@ -5,4 +5,4 @@ The easiest way to install simpletex is through the Python Package Index (PyPI).
 
 .. code-block:: bash
 
-	pip install simpletex
+	pip3 install simpletex
