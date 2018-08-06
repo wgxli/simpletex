@@ -4,4 +4,3 @@ docs/build
 __pycache__/
 .coverage
 cover
-run_tests.bat
