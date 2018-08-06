@@ -1,4 +1,5 @@
 dist
+build
 simpletex.egg-info
 docs/build
 __pycache__/
