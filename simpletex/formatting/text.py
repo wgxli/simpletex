@@ -38,7 +38,7 @@ class SimpleFormatter(Formatter):
 
     def _format_text(self, text) -> str:
         if self._inline:
-            return '{}{}'.format(Command(self.inline_name),
+            return '{} {}'.format(Command(self.inline_name),
                                  text)
         else:
             return Command(self.command_name, [text])
@@ -56,7 +56,7 @@ class Bold(SimpleFormatter):
             of the formatter is used.
             Otherwise, use the default (``\textbf{}``) version.
         """
-        super().__init__('textbf', 'bfshape', inline)
+        super().__init__('textbf', 'bfseries', inline)
 
 
 class Italics(SimpleFormatter):
@@ -77,16 +77,13 @@ class Italics(SimpleFormatter):
 class Underline(SimpleFormatter):
     """Applies underline formatting to text."""
 
-    def __init__(self, inline: bool = False):
+    def __init__(self):
         r"""
         Create a new underline formatter.
-
-        inline : bool
-            If true, the inline (TeX directive) version
-            of the formatter is used.
-            Otherwise, use the default (LaTeX command) version.
+        
+        Note that inline formatting is not supported for underlines.
         """
-        super().__init__('underline', 'underline', inline)
+        super().__init__('underline', None, False)
 
 
 class SmallCaps(SimpleFormatter):
