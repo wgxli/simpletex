@@ -1,6 +1,5 @@
-.. image:: https://img.shields.io/pypi/v/simpletex.svg
-    :target: https://pypi.python.org/pypi/simpletex
-    :alt: PyPI
+.. image:: https://badge.fury.io/py/simpletex.svg
+    :target: https://badge.fury.io/py/simpletex
 
 .. image:: https://readthedocs.org/projects/simpletex/badge/?version=latest
     :target: http://simpletex.readthedocs.io/en/latest/?badge=latest
