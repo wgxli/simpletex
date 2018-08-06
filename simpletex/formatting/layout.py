@@ -32,7 +32,7 @@ class Centering(Environment):
 
     def _format_text(self, text) -> str:
         if self._inline:
-            return '{}{}'.format(Command('centering'), text)
+            return '{} {}'.format(Command('centering'), text)
         else:
             return super()._format_text(text)
 
@@ -44,7 +44,7 @@ class Columns(Environment):
     Equivalent to the LaTeX ``multicols`` environment.
     """
 
-    def __init__(self, number: int):
+    def __init__(self, number: int = 2):
         """
         Create a new ``multicols`` environment.
 
@@ -53,5 +53,8 @@ class Columns(Environment):
         number : int
             The number of columns to use.
         """
-        super().__init__('multicols')
+        if number == 2:
+            super().__init__('multicols')
+        else:
+            super().__init__('multicols', number)
         usepackage('multicol')

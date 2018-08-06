@@ -61,10 +61,11 @@ class Command(Text):
 
 
 class Environment(Formatter):
-    def __init__(self, name=None):
+    def __init__(self, name=None, *args):
         super().__init__()
         if name is not None:
-            self.header = Command('begin', [name])
+            # [name, *args] not supported in Python 3.4 and below
+            self.header = Command('begin', [name] + list(args))
             self.footer = Command('end', [name])
 
     def _format_text(self, text) -> str:

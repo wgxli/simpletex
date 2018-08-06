@@ -36,6 +36,9 @@ class TestEquation(unittest.TestCase):
             write(17)
         self.assertEqual(dump(), '$$x = 5 = 17$$')
 
+    def tearDown(self):
+        clear()
+
 
 class TestAdd(unittest.TestCase):
     def setUp(self):
@@ -60,6 +63,9 @@ class TestAdd(unittest.TestCase):
             write(7)
         self.assertEqual(dump(), '3+5+7')
 
+    def tearDown(self):
+        clear()
+
 
 class TestSubtract(unittest.TestCase):
     def setUp(self):
@@ -82,6 +88,9 @@ class TestSubtract(unittest.TestCase):
             write(3)
             write(5)
         self.assertEqual(dump(), '3-5')
+
+    def tearDown(self):
+        clear()
 
 
 class TestMultiply(unittest.TestCase):
@@ -106,6 +115,9 @@ class TestMultiply(unittest.TestCase):
             write(5)
             write(7)
         self.assertEqual(dump(), '3*5*7')
+
+    def tearDown(self):
+        clear()
 
 
 class TestDivide(unittest.TestCase):
@@ -141,6 +153,9 @@ class TestDivide(unittest.TestCase):
     def test_error_long(self):
         self.assertRaises(ValueError, Divide(), [3, 1, 4])
 
+    def tearDown(self):
+        clear()
+
 
 class TestMatrix(unittest.TestCase):
     def setUp(self):
@@ -164,3 +179,7 @@ class TestMatrix(unittest.TestCase):
                 write(line)
         self.assertEqual(dump(),
                          MAT_ENV.format('\t1 & 2 \\\\\n\t3 & 4 \\\\'))
+
+    def tearDown(self):
+        clear()
+

@@ -53,9 +53,9 @@ class _GlobalContextManager(object):
         """Return the context at the top of the current context stack."""
         return self.contextStack[-1]
 
-    def write(self, text):
-        """Write the given text to the top-level context."""
-        self.top.write(text)
+    def write(self, *args, **kwargs):
+        """Write the given text or parameters to the top-level context."""
+        self.top.write(*args, **kwargs)
 
     def save(self, name):
         """Save the entire document under the given filename."""
@@ -106,9 +106,9 @@ def latex_escape(text) -> str:
                    for char in str(text))
 
 
-def write(text):
-    """Write the given text to the current top-level context."""
-    _CONTEXT.write(text)
+def write(*args, **kwargs):
+    """Write the given text or parameters to the current top-level context."""
+    _CONTEXT.write(*args, **kwargs)
 
 
 def write_break(text):

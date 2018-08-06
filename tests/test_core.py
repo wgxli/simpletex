@@ -10,7 +10,6 @@ SAMPLE_TEXT = string.printable
 class TestFormatter(unittest.TestCase):
     def setUp(self):
         self.formatter = Formatter()
-        clear()
 
     def test_call(self):
         self.assertEqual(self.formatter(SAMPLE_TEXT),
@@ -23,6 +22,9 @@ class TestFormatter(unittest.TestCase):
         with self.formatter:
             write(SAMPLE_TEXT)
         self.assertEqual(dump(), SAMPLE_TEXT)
+
+    def tearDown(self):
+        clear()
 
 
 class TestText(unittest.TestCase):
@@ -82,6 +84,9 @@ class TestText(unittest.TestCase):
         self.assertRaises(TypeError, self.text.__enter__)
         self.assertEqual(self.text.__exit__(), None)
 
+    def tearDown(self):
+        clear()
+
 
 class TestParagraph(unittest.TestCase):
     def setUp(self):
@@ -115,6 +120,9 @@ class TestParagraph(unittest.TestCase):
     def test_context_manager(self):
         self.assertRaises(TypeError, self.par.__enter__)
         self.assertEqual(self.par.__exit__(), None)
+
+    def tearDown(self):
+        clear()
 
 
 class TestRegistry(unittest.TestCase):
@@ -163,3 +171,6 @@ class TestRegistry(unittest.TestCase):
     def test_str_nonempty(self):
         self.register_entries()
         self.assertEqual(str(self.reg), 'A\nB')
+
+    def tearDown(self):
+        clear()
