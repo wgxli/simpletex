@@ -24,6 +24,7 @@ Getting Started
 
     install
     tutorial
+    examples
     
 API Documentation
 -----------------
@@ -32,4 +33,3 @@ API Documentation
 
     core_latex
     xetex
-    third_party

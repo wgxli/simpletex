@@ -1,6 +1,6 @@
 from simpletex import write, dump
-from simpletex.document import Document
+from simpletex.sequences import Description
 
-with Document():
-    write('asdf')
+with Description():
+    write('asdf', 'fdsa')
 print(dump())

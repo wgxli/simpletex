@@ -19,16 +19,20 @@ class ItemList(Formatter):
         """
         Format the given text into a LaTeX item list.
 
-        text : iterable of pairs or iterable of items
-            If pairs are given, the first entry in the pair will be used
-            as the item key, and the second as the value.
+        text : iterable of pairs, mapping, or iterable of items
+            If pairs or a mapping are given, the first component of each entry
+            will be used as the item key, and the second as the value.
             Otherwise, do not use a key in the item command.
         """
         try:
             return '\n'.join(r'\item[{}] {}'.format(key, item)
-                             for key, item in text)
-        except ValueError:
-            return '\n'.join(r'\item {}'.format(item) for item in text)
+                             for key, item in text.items())
+        except AttributeError:
+            try:
+                return '\n'.join(r'\item[{}] {}'.format(key, item)
+                                 for key, item in text)
+            except ValueError:
+                return '\n'.join(r'\item {}'.format(item) for item in text)
 
 
 class OrderedList(Environment):

@@ -31,7 +31,7 @@ class Formatter:
     # Should be overridden by subclasses
     @staticmethod
     def _format_text(text) -> str:
-        return text
+        return str(text)
 
     def __enter__(self):
         """Add self to the global context stack."""
@@ -125,9 +125,12 @@ class Paragraph:
         """Return the number of text segments stored."""
         return len(self._text)
 
-    def write(self, text):
-        """Append the given text segment to the paragraph."""
-        self._text.append(text)
+    def write(self, *args, **kwargs):
+        """Append the given text segment or parameters to the paragraph."""
+        if len(args) == 1:
+            self._text.append(args[0])
+        else:
+            self._text.append(args)
 
     def __str__(self):
         """Return all text segments, joined with newlines."""
